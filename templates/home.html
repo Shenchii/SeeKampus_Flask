@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {{ super() }}
+{% block title %}
+    <title>Charts / ApexCharts - NiceAdmin Bootstrap Template</title>
+{% endblock %}
+{% block sidebar %}
+
+{% endblock %}
+{% block content %}
+    <main id="main" class="main">
+     <div class="pagetitle">
+      <h1>Predictive Analytics</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Graphs</li>
+          <li class="breadcrumb-item active">Predict ME</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+        <
+<form class="row g-3">
+
+                <div class="col-md-6">
+                  <label for="validationDefault03" class="form-label">Course</label>
+                  <select class="form-select" id="validationDefault03" required>
+                    <option selected disabled value="">Select</option>
+                    <option>Bachelor of Science in Accountancy</option>
+                    <option>Bachelor of Science in Psychology</option>
+                    <option>Bachelor of Science in Mechanical Engineering</option>
+                    <option>Bachelor of Science in Electrical Engineering</option>
+                    <option>Bachelor of Science in Chemical Engineering</option>
+                    <option>Bachelor of Science in Electronics Communication Engineering</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="validationDefault04" class="form-label">Year</label>
+                  <select class="form-select" id="validationDefault04" required>
+                    <option selected disabled value="">Select</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                      I validate that my information is final
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </form>
+{% endblock %}
