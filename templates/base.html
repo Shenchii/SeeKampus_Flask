@@ -44,11 +44,11 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/home" class="logo d-flex align-items-center">
         <img src="{{ url_for('static', filename='assets/img/ccc-logo.png') }}" alt="">
         <span class="d-none d-lg-block">SeeKampus</span>
       </a>
-{#      <i class="bi bi-list toggle-sidebar-btn"></i>#}
+      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -271,17 +271,19 @@
 
   <!-- ======= Sidebar ======= -->
   {% block sidebar %}
-{#  <aside id="sidebar" class="sidebar">#}
-{##}
-{#    <ul class="sidebar-nav" id="sidebar-nav">#}
-{##}
-{#      <li class="nav-item">#}
-{#        <a class="nav-link " href="index.html">#}
-{#          <i class="bi bi-grid"></i>#}
-{#          <span>Dashboard</span>#}
-{#        </a>#}
-{#      </li><!-- End Dashboard Nav -->#}
-{##}
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="/home">
+          <i class="bi bi-house-door"></i>
+          <span>Home</span>
+        </a>
+      </li><!-- End Home Nav -->
+
+
+
 {#      <li class="nav-item">#}
 {#        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">#}
 {#          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>#}
@@ -503,9 +505,9 @@
 {#        </a>#}
 {#      </li><!-- End Blank Page Nav -->#}
 {##}
-{#    </ul>#}
-{##}
-{#  </aside><!-- End Sidebar-->#}
+    </ul>
+
+  </aside><!-- End Sidebar-->
   {% endblock %}
     {% block content %}
   <main id="main" class="main">
