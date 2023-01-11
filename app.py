@@ -12,7 +12,6 @@ le = joblib.load('label_encoder.joblib')
 dt_model = joblib.load('school recommender.joblib')
 
 
-
 class DTSchool(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Course = db.Column(db.String(255))
@@ -81,8 +80,6 @@ def register():
 
     # Convert the integer labels back into the original string labels
     recommended_schools = le.inverse_transform(top_5_flat).tolist()
-
-
 
     return render_template('register.html', schools=recommended_schools)
 

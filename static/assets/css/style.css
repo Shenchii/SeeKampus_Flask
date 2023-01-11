@@ -1,13 +1,4 @@
-/**
-* Template Name: NiceAdmin - v2.5.0
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
 }
@@ -381,15 +372,15 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
-  margin-right: 6px;
+  max-height: 80px;
+  margin-right: 10px;
 }
 
 .logo span {
   font-size: 26px;
   font-weight: 700;
   color: #012970;
-  font-family: "Nunito", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .header {
@@ -649,7 +640,7 @@ h6 {
 
   #main,
   #footer {
-    margin-left: 300px;
+    margin-left: 0px;
   }
 }
 
