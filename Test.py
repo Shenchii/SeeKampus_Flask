@@ -1,5 +1,7 @@
 import numpy as np
 import joblib
+from app import DTSchool
+
 
 
 le = joblib.load('label_encoder.joblib')
@@ -44,26 +46,6 @@ location_mapping = {
     # Add other possible location values and their indices here
 }
 
-
-def recommended_schools_by_course(recommended_schools, course):
-    # Create a list to store the schools that offer the inputed course
-    schools_offering_course = []
-    # Iterate through the recommended schools
-    for school in recommended_schools:
-        # Check if the school offers the inputed course
-        if school_offers_course(school, course):
-            # If the school does offer the inputed course, add it to the list
-            schools_offering_course.append(school)
-    # Return the list of schools that offer the inputed course
-    return schools_offering_course
-
-
-def school_offers_course(school, course):
-    # check if the school offers the inputed course
-    # replace this with a real implementation that checks the school's course offerings
-    return True
-
-
 encoded_input_values = [
     course_mapping[course],
     tuition_fee,
@@ -76,6 +58,7 @@ encoded_input_values = [
 
 # Make predictions on test data using the predict_proba method
 probabilities = model.predict_proba([encoded_input_values])
+schools_offering_course = DTSchool.query.filter_by(Course=course_mapping).all()
 
 # Get schools for each data point
 schools = np.argsort(-probabilities, axis=1)[:, :9]
@@ -87,8 +70,4 @@ schools_flat = schools.flatten()
 # Convert the integer labels back into the original string labels
 recommended_schools = le.inverse_transform(schools_flat).tolist()
 
-
-# filter the schools that are not offering the inputed course
-final_recommendations = recommended_schools_by_course(recommended_schools, course)
-
-print(final_recommendations)
+print(recommended_schools)

@@ -1,14 +1,14 @@
 # Import pandas and the School model
 import pandas as pd
-from app import db, dt_School
+from app import db, DTSchool
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv('school profiles.csv')
+df = pd.read_csv('scprofiles_dt.csv')
 
 # Iterate over the rows of the DataFrame
 for _, row in df.iterrows():
     # Create a new instance of the School model
-    school = dt_School()
+    school = DTSchool()
 
     # Set the attributes of the model to the values in the corresponding columns of the DataFrame
     school.Course = row['Course']

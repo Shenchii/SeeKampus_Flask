@@ -6,130 +6,43 @@
 {% endblock %}
 {% block content %}
     <main id="main" class="main">
-         <div class="pagetitle">
-      <h1>Recommended Results</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Recommended Results</li>
-        </ol>
-      </nav>
-      <p>Professional Regulation Commission have two schedules of Board Exams, Batch 1 and Batch 2.</p>
-    </div><!-- End Page Title -->
-
-{#<!-- Custom Styled Validation -->#}
-{#<div class="card">#}
-{#  <div class="card-body">#}
-{#    <br>#}
-{#<form method="POST" action="/register" class="row g-4 needs-validation" novalidate>#}
-{#  <div class="col-md-6">#}
-{#    <label for="course" class="form-label">Course</label>#}
-{#    <select class="form-select" id="course" name="course" required>#}
-{#      <option selected disabled value="">Select Course</option>#}
-{#      <option>Bachelor of Elementary Education</option>#}
-{#      <option>Bachelor of Science in Accountancy</option>#}
-{#      <option>Bachelor of Science in Architecture</option>#}
-{#      <option>Bachelor of Science in Civil Engineering</option>#}
-{#      <option>Bachelor of Science in Criminology</option>#}
-{#      <option>Bachelor of Science in Electrical Engineering</option>#}
-{#      <option>Bachelor of Science in Electronics Engineering</option>#}
-{#      <option>Bachelor of Science in Mechanical Engineering</option>#}
-{#      <option>Bachelor of Science in Nursing</option>#}
-{#      <option>Bachelor of Science in Psychology</option>#}
-{#      <option>Bachelor of Secondary Education</option>#}
-{#      <option>Bachelor of Secondary Education Major in English</option>#}
-{#      <option>Bachelor of Secondary Education Major in Filipino</option>#}
-{#      <option>Bachelor of Secondary Education Major in Mathematics</option>#}
-{#      <option>Bachelor of Secondary Education Major in Social Studies</option>#}
-{#    </select>#}
-{#    <div class="invalid-feedback">#}
-{#      Please select a valid Course.#}
-{#    </div>#}
-{#  </div>#}
-{#    <div class="col-md-2 ">#}
-{#        <label for="tuition_fee" class="form-label">Tuition Fee</label>#}
-{#      <input type="number" class="form-control" id="tuition" name="tuition" required>#}
-{#        <div class="invalid-feedback">#}
-{#            Please use numbers only.#}
-{#        </div>#}
-{#    </div>#}
-{#  <div class="col-md-3 ">#}
-{#    <label for="validationCustom03" class="form-label">Location</label>#}
-{#    <select class="form-select" id="location" name="location" required>#}
-{#      <option selected disabled value="">Select Location</option>#}
-{#      <option>Brgy. Bucal</option>#}
-{#      <option>Brgy. Halang</option>#}
-{#      <option>Brgy. III</option>#}
-{#      <option>Brgy. Makiling</option>#}
-{#      <option>Brgy. Paciano Rizal</option>#}
-{#      <option>Brgy. Parian</option>#}
-{#      <option>Brgy. VII</option>#}
-{#    </select>#}
-{#    <div class="invalid-feedback">#}
-{#      Please select a valid Location.#}
-{#    </div>#}
-{#  </div>#}
-{#    <div class="col-md-3 ">#}
-{#    <label for="validationCustom04" class="form-label">Year</label>#}
-{#    <select class="form-select" id="validationCustom04" required>#}
-{#      <option selected disabled value="">Select Year</option>#}
-{#      <option>2023</option>#}
-{#      <option>2024</option>#}
-{#      <option>2025</option>#}
-{#      <option>2026</option>#}
-{#      <option>2027</option>#}
-{#      <option>2028</option>#}
-{#      <option>2029</option>#}
-{#      <option>2030</option>#}
-{#    </select>#}
-{#    <div class="invalid-feedback">#}
-{#      Please select a valid Year.#}
-{#    </div>#}
-{#  </div>#}
-{#  <div class="col-12">#}
-{#    <div class="form-check">#}
-{#      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>#}
-{#      <label class="form-check-label" for="invalidCheck">#}
-{#        Check if your input is final#}
-{#      </label>#}
-{#      <div class="invalid-feedback">#}
-{#        You must agree before submitting.#}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
-{#   <div class="col-12">#}
-{#    <button class="btn btn-primary" type="submit" >Submit form</button>#}
-{#  </div>#}
-{#</form>#}
-{#</div></div><!-- End Custom Styled Validation -->#}
+        <div class="pagetitle">
+            <h1>Recommended Results</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li class="breadcrumb-item active">Recommended Results</li>
+                </ol>
+            </nav>
+            <p>Professional Regulation Commission have two schedules of Board Exams, Batch 1 and Batch 2.</p>
+        </div><!-- End Page Title -->
 
 
-            <!-- Table with stripped rows -->
-            <table class="table table-striped">
-                <thead>
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">School</th>
+                <th scope="col">Tuition Fee</th>
+                <th scope="col">Location</th>
+                <th scope="col">Passing Rate 1</th>
+                <th scope="col">Passing Rate 2</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for school in recommended_schools %}
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">School</th>
-                    <th scope="col">Tuition Fee</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Passing Rate 1</th>
-                    <th scope="col">Passing Rate 2</th>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ school['School'] }}</td>
+                    <td>{{ school['Tuition_Fee'] }}</td>
+                    <td>{{ school['Location'] }}</td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for i in range(5) %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ schools[i] }}</td>
-                        <td>{{ schools.tuition_fee }}</td>
-                        <td>{{ schools.location }}</td>
-                        <td>{{ schools.passing_rate_1 }}</td>
-                        <td>{{ schools.passing_rate_2 }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            <!-- End Table with stripped rows -->
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- End Table with stripped rows -->
 
 
     </main>
