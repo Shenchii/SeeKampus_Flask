@@ -37,6 +37,20 @@
                     <td>{{ school['School'] }}</td>
                     <td>{{ school['Tuition_Fee'] }}</td>
                     <td>{{ school['Location'] }}</td>
+                    <td>
+                        {% if school['PR1']|int %}
+                            {{ school['PR1'] }}%
+                        {% else %}
+                            {{ school['PR1'] }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if school['PR2']|int %}
+                            {{ school['PR2'] }}%
+                        {% else %}
+                            {{ school['PR2'] }}
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

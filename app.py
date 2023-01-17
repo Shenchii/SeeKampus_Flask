@@ -30,6 +30,22 @@ class ScProfiles(db.Model):
     Tuition_Fee = db.Column(db.String(255))
     Location = db.Column(db.String(255))
     Course = db.Column(db.String(255))
+    PR1_2023 = db.Column(db.String(255))
+    PR2_2023 = db.Column(db.String(255))
+    PR1_2024 = db.Column(db.String(255))
+    PR2_2024 = db.Column(db.String(255))
+    PR1_2025 = db.Column(db.String(255))
+    PR2_2025 = db.Column(db.String(255))
+    PR1_2026 = db.Column(db.String(255))
+    PR2_2026 = db.Column(db.String(255))
+    PR1_2027 = db.Column(db.String(255))
+    PR2_2027 = db.Column(db.String(255))
+    PR1_2028 = db.Column(db.String(255))
+    PR2_2028 = db.Column(db.String(255))
+    PR1_2029 = db.Column(db.String(255))
+    PR2_2029 = db.Column(db.String(255))
+    PR1_2030 = db.Column(db.String(255))
+    PR2_2030 = db.Column(db.String(255))
 
     def __repr__(self):
         return '<ScProfiles %r>' % self.id
@@ -117,20 +133,24 @@ def register():
 
     # Convert the integer labels back into the original string labels
     recommended_schools = le.inverse_transform(schools_flat).tolist()
-    recommended_schools = get_school_profiles(recommended_schools)
+    recommended_schools = get_school_profiles(recommended_schools, year)
     return render_template('register.html', recommended_schools=recommended_schools)
 
 
-def get_school_profiles(recommended_schools):
+def get_school_profiles(recommended_schools, year):
     school_profiles = []
     for school in recommended_schools:
         school_profile = ScProfiles.query.filter_by(School=school).first()
         if school_profile:
+            pr1_column = 'PR1_' + year
+            pr2_column = 'PR2_' + year
             school_profiles.append({
                 'School': school_profile.School,
                 'Tuition_Fee': school_profile.Tuition_Fee,
                 'Location': school_profile.Location,
-                'Course': school_profile.Course
+                'Course': school_profile.Course,
+                'PR1': getattr(school_profile, pr1_column),
+                'PR2': getattr(school_profile, pr2_column),
             })
     return school_profiles
 

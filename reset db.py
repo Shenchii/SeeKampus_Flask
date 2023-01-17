@@ -1,5 +1,5 @@
-from app import db, DTSchool
+from app import db, ScProfiles
 
-db.session.query(DTSchool).delete()
+db.session.query(ScProfiles).delete()
 db.session.commit()
 
