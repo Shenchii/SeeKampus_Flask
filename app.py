@@ -134,7 +134,7 @@ def register():
     # Convert the integer labels back into the original string labels
     recommended_schools = le.inverse_transform(schools_flat).tolist()
     recommended_schools = get_school_profiles(recommended_schools, year)
-    return render_template('register.html', recommended_schools=recommended_schools)
+    return render_template('register.html', recommended_schools=recommended_schools, year=year)
 
 
 def get_school_profiles(recommended_schools, year):
@@ -150,7 +150,7 @@ def get_school_profiles(recommended_schools, year):
                 'Location': school_profile.Location,
                 'Course': school_profile.Course,
                 'PR1': getattr(school_profile, pr1_column),
-                'PR2': getattr(school_profile, pr2_column),
+                # 'PR2': getattr(school_profile, pr2_column),
             })
     return school_profiles
 
