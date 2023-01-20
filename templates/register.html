@@ -14,8 +14,24 @@
                     <li class="breadcrumb-item active">Recommended Results</li>
                 </ol>
             </nav>
-            <p>Professional Regulation Commission have two schedules of Board Exams, Batch 1 and Batch 2.</p>
         </div><!-- End Page Title -->
+
+        <div class="card">
+  <div class="card-body">
+    <br>
+  <div class="justify-content-center">
+    <label for="course" class="form-label">Course: {{ course }}</label><br>
+    <label for="tuition_fee" class="form-label">Tuition Fee: {{ tuition_fee }}</label><br>
+      <label for="location" class="form-label">Location:  {{ location }}</label><br>
+      <label for="validationCustom04" class="form-label">Predicted Year: {{ year }}</label><br>
+  </div>
+
+
+
+
+
+
+</div></div>
 
 
         <!-- Table with stripped rows -->
@@ -26,7 +42,7 @@
                 <th scope="col">School</th>
                 <th scope="col">Tuition Fee</th>
                 <th scope="col">Location</th>
-                <th scope="col">{{ year }} Passing Rate</th>
+                <th scope="col">{{ year }} Predicted Passing Rate</th>
 {#                <th scope="col">Passing Rate 2</th>#}
             </tr>
             </thead>
@@ -58,6 +74,7 @@
 
         <!-- End Table with stripped rows -->
 
-
+                <h6 class="card-title"> *Insufficient data =<span>  not enough data from PRC board results from 2010-2022</span></h6>
+        <button class="btn btn-primary" type="submit" onclick="location.href='/home'">Submit new form</button>
     </main>
 {% endblock %}
