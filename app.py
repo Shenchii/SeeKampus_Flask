@@ -56,6 +56,11 @@ def index():  # put application's code here
     return render_template('home.html')
 
 
+@app.route('/register')
+def another():
+    return redirect(url_for('/home'))
+
+
 @app.route('/register', methods=['POST'])
 def register():
     course = request.form['course']
@@ -123,7 +128,6 @@ def register():
 
     # Make predictions on test data using the predict_proba method
     probabilities = dt_model.predict_proba([encoded_input_values])
-    # schools_offering_course = DTSchool.query.filter_by(Course=course).all()
 
     # Get schools for each data point
     schools = np.argsort(-probabilities, axis=1)[:, :9]
@@ -134,7 +138,8 @@ def register():
     # Convert the integer labels back into the original string labels
     recommended_schools = le.inverse_transform(schools_flat).tolist()
     recommended_schools = get_school_profiles(recommended_schools, year)
-    return render_template('register.html', recommended_schools=recommended_schools, year=year)
+    return render_template('register.html', recommended_schools=recommended_schools, year=year, course=course,
+                           tuition_fee=tuition_fee, location=location)
 
 
 def get_school_profiles(recommended_schools, year):
@@ -143,15 +148,18 @@ def get_school_profiles(recommended_schools, year):
         school_profile = ScProfiles.query.filter_by(School=school).first()
         if school_profile:
             pr1_column = 'PR1_' + year
-            pr2_column = 'PR2_' + year
             school_profiles.append({
                 'School': school_profile.School,
                 'Tuition_Fee': school_profile.Tuition_Fee,
                 'Location': school_profile.Location,
                 'Course': school_profile.Course,
-                'PR1': getattr(school_profile, pr1_column),
-                # 'PR2': getattr(school_profile, pr2_column),
+                'PR1': getattr(school_profile, pr1_column)
             })
+
+    # Sort the schools by PR1, with 'Insufficient Data' at the bottom
+    school_profiles = sorted(school_profiles, key=lambda x: 0 if x['PR1'] == 'Insufficient Data' else int(x['PR1']),
+                             reverse=True)
+
     return school_profiles
 
 
