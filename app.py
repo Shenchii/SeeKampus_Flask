@@ -1,16 +1,38 @@
-from flask import Flask, render_template, request, redirect, url_for
+import joblib
+import numpy as np
+import pandas as pd
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+from flask_login import UserMixin, login_user, LoginManager, logout_user, current_user
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sklearn.tree import DecisionTreeClassifier
-import numpy as np
-import joblib
-import pandas as pd
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SeeKampus.db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+admin = Admin(app, name='SeeKampus', template_mode='bootstrap3')
 
 le = joblib.load('label_encoder.joblib')
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
+
+
+class AdminAccount(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), unique=True)
+    email = db.Column(db.String(255), unique=True)
+    password = db.Column(db.String(255))
+    role = db.Column(db.String(255))
+
+    def __repr__(self):
+        return '<User %r>' % self.id
 
 
 class DTSchool(db.Model):
@@ -49,6 +71,15 @@ class ScProfiles(db.Model):
 
     def __repr__(self):
         return '<ScProfiles %r>' % self.id
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return AdminAccount.query.get(int(user_id))
+
+
+admin.add_view(ModelView(DTSchool, db.session))
+admin.add_view(ModelView(ScProfiles, db.session))
 
 
 @app.route('/')
@@ -168,5 +199,44 @@ def home():  # put application's code here
     return render_template('home.html')
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        remember = True if request.form.get('remember') else False
+
+        user = AdminAccount.query.filter_by(username=username).first()
+
+        if not user or not check_password_hash(user.password, password):
+            flash('Please check your login details and try again.')
+            return redirect(url_for('login'))
+
+        login_user(user, remember=remember)
+
+        if current_user.role == 'admin':
+            return redirect(url_for('admin.index'))
+        else:
+            flash('You are not an admin')
+            return redirect(url_for('login'))
+    return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+def create_admin():
+    admin_exist = AdminAccount.query.filter_by(username='admin').first()
+    if not admin_exist:
+        admin1 = AdminAccount(username='admin', email='admin@example.com', password=generate_password_hash('password'),
+                              role='admin')
+        db.session.add(admin1)
+        db.session.commit()
+
+
 if __name__ == '__main__':
-    app.run()
+    create_admin()
+    app.run(debug=True)

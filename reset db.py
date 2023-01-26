@@ -1,5 +1,5 @@
-from app import db, ScProfiles
+from app import db, AdminAccount
 
-db.session.query(ScProfiles).delete()
+db.session.query(AdminAccount).delete()
 db.session.commit()
 
