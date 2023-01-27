@@ -78,7 +78,6 @@ def load_user(user_id):
     return AdminAccount.query.get(int(user_id))
 
 
-admin.add_view(ModelView(DTSchool, db.session))
 admin.add_view(ModelView(ScProfiles, db.session))
 
 
@@ -166,8 +165,13 @@ def register():
     # Flatten the array
     schools_flat = schools.flatten()
 
+    school_data = pd.read_sql_query(db.session.query(DTSchool).filter(
+    (DTSchool.Course == course) & (DTSchool.Tuition_Fee == tuition_fee) | (DTSchool.Location == location)
+    ).statement, db.session.bind)
+
+
     # Convert the integer labels back into the original string labels
-    recommended_schools = le.inverse_transform(schools_flat).tolist()
+    recommended_schools = school_data['School']
     recommended_schools = get_school_profiles(recommended_schools, year)
     return render_template('register.html', recommended_schools=recommended_schools, year=year, course=course,
                            tuition_fee=tuition_fee, location=location)
