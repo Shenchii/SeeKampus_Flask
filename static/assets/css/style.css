@@ -1198,11 +1198,12 @@ h6 {
 }
 
 .error-404 h1 {
-  font-size: 180px;
+  font-size: 50px;
   font-weight: 700;
   color: #4154f1;
+  margin-top: 100px;
   margin-bottom: 0;
-  line-height: 150px;
+  /*line-height: 150px;*/
 }
 
 .error-404 h2 {

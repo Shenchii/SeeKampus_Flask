@@ -173,9 +173,16 @@ def register():
     # Convert the integer labels back into the original string labels
     recommended_schools = school_data['School']
     recommended_schools = get_school_profiles(recommended_schools, year)
-    return render_template('register.html', recommended_schools=recommended_schools, year=year, course=course,
-                           tuition_fee=tuition_fee, location=location)
+    if not recommended_schools:
+        return redirect(url_for('no_schools'))
+    else:
+        return render_template('register.html', recommended_schools=recommended_schools, year=year, course=course,
+                               tuition_fee=tuition_fee, location=location)
 
+
+@app.route('/no_schools')
+def no_schools():
+    return render_template('no_school_found.html')
 
 def get_school_profiles(recommended_schools, year):
     school_profiles = []
