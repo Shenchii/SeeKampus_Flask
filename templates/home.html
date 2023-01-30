@@ -5,529 +5,524 @@
 {% block sidebar %}
 {% endblock %}
 {% block content %}
-  <main id="main" class="main">
+    <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Predictive Analytics and Decision Tree Algorithm</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-
-<!-- Custom Styled Validation -->
-<div class="card">
-  <div class="card-body">
-    <br>
-<form method="POST" action="/register" class="row g-4 needs-validation" novalidate>
-  <div class="col-md-6">
-    <label for="course" class="form-label">Course</label>
-    <select class="form-select" id="course" name="course" required>
-      <option selected disabled value="">Select Course</option>
-      <option>Bachelor of Elementary Education</option>
-      <option>Bachelor of Science in Accountancy</option>
-      <option>Bachelor of Science in Architecture</option>
-      <option>Bachelor of Science in Civil Engineering</option>
-      <option>Bachelor of Science in Criminology</option>
-      <option>Bachelor of Science in Electrical Engineering</option>
-      <option>Bachelor of Science in Electronics Engineering</option>
-      <option>Bachelor of Science in Mechanical Engineering</option>
-      <option>Bachelor of Science in Nursing</option>
-      <option>Bachelor of Science in Psychology</option>
-      <option>Bachelor of Secondary Education</option>
-      <option>Bachelor of Secondary Education Major in English</option>
-      <option>Bachelor of Secondary Education Major in Filipino</option>
-      <option>Bachelor of Secondary Education Major in Mathematics</option>
-      <option>Bachelor of Secondary Education Major in Social Studies</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid Course.
-    </div>
-  </div>
-    <div class="col-md-2 ">
-        <label for="tuition_fee" class="form-label">Tuition Fee</label>
-      <select class="form-select" id="tuition_fee" name="tuition_fee" required>
-      <option selected disabled value="">Select Tuition</option>
-      <option>Free Tuition</option>
-      <option>0 - 20000</option>
-      <option>21000 - 40000</option>
-      <option>41000 - 60000</option>
-    </select>
-        <div class="invalid-feedback">
-            Please select a valid input.
-        </div>
-    </div>
-  <div class="col-md-3 ">
-    <label for="validationCustom03" class="form-label">Location</label>
-    <select class="form-select" id="location" name="location" required>
-      <option selected disabled value="">Select Location</option>
-      <option>Brgy. Bucal</option>
-      <option>Brgy. Halang</option>
-      <option>Brgy. III</option>
-      <option>Brgy. Makiling</option>
-      <option>Brgy. Paciano Rizal</option>
-      <option>Brgy. Parian</option>
-      <option>Brgy. VII</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid Location.
-    </div>
-  </div>
-    <div class="col-md-3 ">
-    <label for="validationCustom04" class="form-label">Year</label>
-    <select class="form-select" id="year" name="year" required>
-      <option selected disabled value="">Select Year</option>
-      <option>2023</option>
-      <option>2024</option>
-      <option>2025</option>
-      <option>2026</option>
-      <option>2027</option>
-      <option>2028</option>
-      <option>2029</option>
-      <option>2030</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid Year.
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-      <label class="form-check-label" for="invalidCheck">
-        Check if your input is final
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-   <div class="col-12">
-    <button class="btn btn-primary" type="submit" >Submit form</button>
-  </div>
-</form>
-</div></div><!-- End Custom Styled Validation -->
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
 
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-
-            <!-- Recent Activity -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent <span>| Activity</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-journal-text"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h5>RN Passers</h5>
-                      <span class="text-success small pt-1 fw-bold">|</span> <span class="text-muted small pt-2 ps-1">Oct. 18, 2022</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Recent Activity -->
-
-            <!-- CPA Passers -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">CPA Passers <span>| CCC 2022</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-person-check-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>64</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End CPA Passers -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Board Takers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End Customers Card -->
-
-            <!-- Reports -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">LET Passsers <span>/ City College of Calamba</span></h5>
-
-                  <!-- Line Chart / LET PASSERS -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Passers',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Waiting',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Failed',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2010", "2011-09-19T01:30:00.000Z", "2012-09-19T02:30:00.000Z", "2013-09-19T03:30:00.000Z", "2014-09-19T04:30:00.000Z", "2015-09-19T05:30:00.000Z", "2016-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'year'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
-
-                </div>
-
-              </div>
-            </div><!-- End Reports -->
-
-
-          </div>
-        </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-
-          <div class="card">
+        <!-- Custom Styled Validation -->
+        <div class="card">
             <div class="card-body">
-              <h5 class="card-title">About Us</h5>
-              <p>SeeKampus: A College Recommender System is the first system developed by students of City College of Calamba where you can see the general infos about PRC in all Colleges in Calamba.</p>
-            </div> </div>
-
-
-            <div class="card-body">
-              <h4 class="card-title">Professional Regulation Commission <span>| Schedules</span></h4>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">Oct 18 </div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Sleep Passers
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">Sept 28</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Sleepers Examination day
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">Aug 30</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    End of Registration
-                  </div>
-                </div><!-- End activity item-->
-                <div class="activity-item d-flex">
-                  <div class="activite-label">May 32</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Secret walang clue
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">June 13</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Start of registration for <a href="#" class="fw-bold text-dark">Longest Sleep</a> Licensure Exam
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">May 32</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Secret walang clue
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">April 13</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Hello world!
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
+                <br>
+                <form method="POST" action="/register" class="row g-4 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="course" class="form-label">Course</label>
+                        <select class="form-select" id="course" name="course" required>
+                            <option selected disabled value="">Select Course</option>
+                            <option>Bachelor of Elementary Education</option>
+                            <option>Bachelor of Science in Accountancy</option>
+                            <option>Bachelor of Science in Architecture</option>
+                            <option>Bachelor of Science in Civil Engineering</option>
+                            <option>Bachelor of Science in Criminology</option>
+                            <option>Bachelor of Science in Electrical Engineering</option>
+                            <option>Bachelor of Science in Electronics Engineering</option>
+                            <option>Bachelor of Science in Mechanical Engineering</option>
+                            <option>Bachelor of Science in Nursing</option>
+                            <option>Bachelor of Science in Psychology</option>
+                            <option>Bachelor of Secondary Education</option>
+                            <option>Bachelor of Secondary Education Major in English</option>
+                            <option>Bachelor of Secondary Education Major in Filipino</option>
+                            <option>Bachelor of Secondary Education Major in Mathematics</option>
+                            <option>Bachelor of Secondary Education Major in Social Studies</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Course.
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <label for="tuition_fee" class="form-label">Tuition Fee</label>
+                        <select class="form-select" id="tuition_fee" name="tuition_fee" required>
+                            <option selected disabled value="">Select Tuition</option>
+                            <option>Free Tuition</option>
+                            <option>0 - 20000</option>
+                            <option>21000 - 40000</option>
+                            <option>41000 - 60000</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid input.
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <label for="location" class="form-label">Location</label>
+                        <select class="form-select" id="location" name="location" required>
+                            <option selected disabled value="">Select Location</option>
+                            <option>Brgy. Bucal</option>
+                            <option>Brgy. Halang</option>
+                            <option>Brgy. III</option>
+                            <option>Brgy. Makiling</option>
+                            <option>Brgy. Paciano Rizal</option>
+                            <option>Brgy. Parian</option>
+                            <option>Brgy. VII</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Location.
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <label for="year" class="form-label">Year</label>
+                        <select class="form-select" id="year" name="year" required>
+                            <option selected disabled value="">Select Year</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Year.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
             </div>
-          </div><!-- End Recent Activity -->
+        </div>
 
 
+        <!-- End Custom Styled Validation -->
 
 
-        </div><!-- End Right side columns -->
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+                        <!-- Recent Activity -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Recent <span>| Activity</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-journal-text"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h5>RN Passers</h5>
+                                            <span class="text-success small pt-1 fw-bold">|</span> <span
+                                                class="text-muted small pt-2 ps-1">Oct. 18, 2022</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Recent Activity -->
+
+                        <!-- CPA Passers -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">CPA Passers <span>| CCC 2022</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-person-check-fill"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>64</h6>
+                                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                                class="text-muted small pt-2 ps-1">increase</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End CPA Passers -->
+
+                        <!-- Customers Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Board Takers <span>| This Year</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people-fill"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>1244</h6>
+                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                                class="text-muted small pt-2 ps-1">decrease</span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">LET Passsers <span>/ City College of Calamba</span></h5>
+
+                                    <!-- Line Chart / LET PASSERS -->
+                                    <div id="reportsChart"></div>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                    name: 'Passers',
+                                                    data: [31, 40, 28, 51, 42, 82, 56],
+                                                }, {
+                                                    name: 'Waiting',
+                                                    data: [11, 32, 45, 32, 34, 52, 41]
+                                                }, {
+                                                    name: 'Failed',
+                                                    data: [15, 11, 32, 18, 9, 24, 11]
+                                                }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'datetime',
+                                                    categories: ["2010", "2011-09-19T01:30:00.000Z", "2012-09-19T02:30:00.000Z", "2013-09-19T03:30:00.000Z", "2014-09-19T04:30:00.000Z", "2015-09-19T05:30:00.000Z", "2016-09-19T06:30:00.000Z"]
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'year'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
 
 
+                    </div>
+                </div><!-- End Left side columns -->
 
-        <br>
-<div class="pagetitle">
-  <h1>Colleges in Calamba</h1>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active">Lists of Colleges in Calamba</li>
-    </ol>
-  </nav>
-</div><!-- End Page Title -->
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">About Us</h5>
+                            <p>SeeKampus: A College Recommender System is the first system developed by students of City
+                                College of Calamba where you can see the general infos about PRC in all Colleges in
+                                Calamba.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <h4 class="card-title">Professional Regulation Commission <span>| 2023 Schedules</span></h4>
+
+                        <div class="activity">
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">LET</div>
+                                <i class='bi bi-circle-fill activity-badge text-success flex-start'></i>
+                                <div class="activity-content">
+                                    Mar 26 and Sep 24
+                                </div>
+                            </div><!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">CLE</div>
+                                <i class='bi bi-circle-fill activity-badge text-danger flex-start'></i>
+                                <div class="activity-content">
+                                    Apr 3-5 and Aug 25-27
+                                </div>
+                            </div><!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">PLE</div>
+                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                <div class="activity-content">
+                                    Mar 5-6, 12-13 and Oct 20-21, 27-28
+                                </div>
+                            </div><!-- End activity item-->
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">NLE</div>
+                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                <div class="activity-content">
+                                    May 28-29 and Nov 11-12
+                                </div>
+                            </div><!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">CPALE</div>
+                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                                <div class="activity-content">
+                                    May 21-23, Sep 30 and Oct 1-2
+                                </div>
+                            </div><!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">CELE</div>
+                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                <div class="activity-content">
+                                    Apr 23-24 and Nov 17-18
+                                </div>
+                            </div><!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">MELE</div>
+                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                                <div class="activity-content">
+                                    Feb 26-27 and Aug 5-6
+                                </div>
+                            </div><!-- End activity item-->
+
+                        </div>
+
+                    </div>
+                </div><!-- End Recent Activity -->
+
+
+            </div><!-- End Right side columns -->
+
+
+            <br>
+            <div class="pagetitle">
+                <h1>Colleges in Calamba</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Lists of Colleges in Calamba</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
             <h5 class="card-title"></h5>
             <!-- Table with stripped rows -->
             <table class="table table-striped">
-              <thead>
+                <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">School</th>
-                  <th scope="col">State</th>
-                  <th scope="col">Est.</th>
-                  <th scope="col">Lvl of Accreditation</th>
+                    <th scope="col">#</th>
+                    <th scope="col">School</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Est.</th>
+                    <th scope="col">Lvl of Accreditation</th>
                 </tr>
-              </thead>
-              <tbody>
+                </thead>
+                <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>City College of Calamba</td>
-                  <td>Municipal</td>
-                  <td>2006</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Laguna College Business and Arts</td>
-                  <td>Private</td>
-                  <td>1999</td>
-                  <td>PACUCOA</td>
+                    <th scope="row">1</th>
+                    <td>City College of Calamba</td>
+                    <td>Municipal</td>
+                    <td>2006</td>
+                    <td></td>
                 </tr>
                 <tr>
-                  <th scope="row">3</th>
-                  <td>Saints John and Paul Colleges</td>
-                  <td>Private</td>
-                  <td>0000</td>
-                  <td></td>
+                    <th scope="row">2</th>
+                    <td>Laguna College Business and Arts</td>
+                    <td>Private</td>
+                    <td>1999</td>
+                    <td>PACUCOA</td>
                 </tr>
                 <tr>
-                  <th scope="row">4</th>
-                  <td>Saint John Colleges</td>
-                  <td>Private</td>
-                  <td>0000</td>
-                  <td></td>
+                    <th scope="row">3</th>
+                    <td>Saints John and Paul Colleges</td>
+                    <td>Private</td>
+                    <td>0000</td>
+                    <td></td>
                 </tr>
                 <tr>
-                  <th scope="row">5</th>
-                  <td>Lyceum of the Philippine University</td>
-                  <td>University</td>
-                  <td>0000</td>
-                  <td>PACUCOA PAASCU</td>
+                    <th scope="row">4</th>
+                    <td>Saint John Colleges</td>
+                    <td>Private</td>
+                    <td>0000</td>
+                    <td></td>
                 </tr>
                 <tr>
-                  <th scope="row">6</th>
-                  <td>University of Perpetual Help System Dalta</td>
-                  <td>University</td>
-                  <td>0000</td>
-                  <td>PACUCOA</td>
+                    <th scope="row">5</th>
+                    <td>Lyceum of the Philippine University</td>
+                    <td>University</td>
+                    <td>0000</td>
+                    <td>PACUCOA PAASCU</td>
                 </tr>
                 <tr>
-                  <th scope="row">7</th>
-                  <td>National University</td>
-                  <td>University</td>
-                  <td>0000</td>
-                  <td></td>
-                  <tr>
+                    <th scope="row">6</th>
+                    <td>University of Perpetual Help System Dalta</td>
+                    <td>University</td>
+                    <td>0000</td>
+                    <td>PACUCOA</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>National University</td>
+                    <td>University</td>
+                    <td>0000</td>
+                    <td></td>
+                <tr>
                     <th scope="row">8</th>
                     <td>Don Bosco College</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td>PAASCU</td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">9</th>
                     <td>AMA</td>
                     <td>University</td>
                     <td>0000</td>
                     <td>PACUCOA</td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">10</th>
                     <td>Colegio de San Juan de Letran -Calamba</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td>PACUCOA</td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">11</th>
                     <td>Philippines Womens University</td>
                     <td>University</td>
                     <td>0000</td>
                     <td>TESDA</td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">12</th>
                     <td>Calamba Doctors College</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td>TESDA</td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">13</th>
                     <td>STI College</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td></td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">14</th>
                     <td>Rizal College of Laguna</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td></td>
-                  </tr>
-                  <tr>
+                </tr>
+                <tr>
                     <th scope="row">15</th>
                     <td>Saint Benilde International School Inc.</td>
                     <td>Private</td>
                     <td>0000</td>
                     <td></td>
-                  </tr>
                 </tr>
-              </tbody>
+
+                </tbody>
             </table>
             <!-- End Table with stripped rows -->
 
 
+        </section>
 
-    </section>
-
-  </main><!-- End #main -->
+    </main><!-- End #main -->
 {% endblock %}

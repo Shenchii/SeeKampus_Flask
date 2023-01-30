@@ -17,7 +17,7 @@
         </div><!-- End Page Title -->
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body"><br>
                 <div class="d-flex justify-content-center">
                     <h5>User's Preferences</h5>
                 </div>
@@ -57,8 +57,8 @@
                     <td>{{ school['Tuition_Fee'] }}</td>
                     <td>{{ school['Location'] }}</td>
                     <td>
-                        {% if school['PR1']|int %}
-                            {{ school['PR1'] }}%
+                        {% if school['PR_' + year]|int %}
+                            {{ school['PR_' + year] }}%
                         {% else %}
                             Insufficient data
                         {% endif %}
