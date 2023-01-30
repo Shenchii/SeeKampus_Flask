@@ -52,25 +52,18 @@ class ScProfiles(db.Model):
     Tuition_Fee = db.Column(db.String(255))
     Location = db.Column(db.String(255))
     Course = db.Column(db.String(255))
-    PR1_2023 = db.Column(db.String(255))
-    PR2_2023 = db.Column(db.String(255))
-    PR1_2024 = db.Column(db.String(255))
-    PR2_2024 = db.Column(db.String(255))
-    PR1_2025 = db.Column(db.String(255))
-    PR2_2025 = db.Column(db.String(255))
-    PR1_2026 = db.Column(db.String(255))
-    PR2_2026 = db.Column(db.String(255))
-    PR1_2027 = db.Column(db.String(255))
-    PR2_2027 = db.Column(db.String(255))
-    PR1_2028 = db.Column(db.String(255))
-    PR2_2028 = db.Column(db.String(255))
-    PR1_2029 = db.Column(db.String(255))
-    PR2_2029 = db.Column(db.String(255))
-    PR1_2030 = db.Column(db.String(255))
-    PR2_2030 = db.Column(db.String(255))
+    PR_2023 = db.Column(db.String(255))
+    PR_2024 = db.Column(db.String(255))
+    PR_2025 = db.Column(db.String(255))
+    PR_2026 = db.Column(db.String(255))
+    PR_2027 = db.Column(db.String(255))
+    PR_2028 = db.Column(db.String(255))
+    PR_2029 = db.Column(db.String(255))
+    PR_2030 = db.Column(db.String(255))
 
     def __repr__(self):
         return '<ScProfiles %r>' % self.id
+
 
 
 @login_manager.user_loader
@@ -184,22 +177,23 @@ def register():
 def no_schools():
     return render_template('no_school_found.html')
 
+
 def get_school_profiles(recommended_schools, year):
     school_profiles = []
     for school in recommended_schools:
         school_profile = ScProfiles.query.filter_by(School=school).first()
         if school_profile:
-            pr1_column = 'PR1_' + year
+            pr1_column = 'PR_' + year
             school_profiles.append({
                 'School': school_profile.School,
                 'Tuition_Fee': school_profile.Tuition_Fee,
                 'Location': school_profile.Location,
                 'Course': school_profile.Course,
-                'PR1': getattr(school_profile, pr1_column)
+                'PR_' + year: getattr(school_profile, pr1_column)
             })
 
     # Sort the schools by PR1, with 'Insufficient Data' at the bottom
-    school_profiles = sorted(school_profiles, key=lambda x: 0 if x['PR1'] == 'Insufficient Data' else int(x['PR1']),
+    school_profiles = sorted(school_profiles, key=lambda x: 0 if x['PR_' + year] == 'Insufficient Data' else float(x['PR_'+ year]),
                              reverse=True)
 
     return school_profiles
@@ -242,7 +236,7 @@ def logout():
 def create_admin():
     admin_exist = AdminAccount.query.filter_by(username='admin').first()
     if not admin_exist:
-        admin1 = AdminAccount(username='admin', email='admin@example.com', password=generate_password_hash('password'),
+        admin1 = AdminAccount(username='admin', email='admin@example.com', password=generate_password_hash('123'),
                               role='admin')
         db.session.add(admin1)
         db.session.commit()
