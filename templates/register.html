@@ -16,26 +16,16 @@
             </nav>
         </div><!-- End Page Title -->
 
-       <div class="card">
+        <div class="card">
   <div class="card-body">
-    <div class="d-flex justify-content-center">
-      <h5>User's Preferences</h5>
-    </div>
-    <div class="form-group">
-      <label for="course">Course: {{ course }}</label>
-    </div>
-    <div class="form-group">
-      <label for="tuition_fee">Tuition Fee: {{ tuition_fee }}</label>
-    </div>
-    <div class="form-group">
-      <label for="location">(or) Location: {{ location }}</label>
-    </div>
-    <div class="form-group">
-      <label for="validationCustom04">Predicted Year: {{ year }}</label>
-    </div>
+    <br>
+  <div class="justify-content-center">
+      <h5>User's Preferences</h5><br>
+    <label for="course" class="form-label">Course: {{ course }}</label><br>
+    <label for="tuition_fee" class="form-label">Tuition Fee: {{ tuition_fee }}</label><br>
+      <label for="location" class="form-label">(Or) Location:  {{ location }}</label><br>
+      <label for="validationCustom04" class="form-label">Predicted Year: {{ year }}</label><br>
   </div>
-</div>
-
 
 
 
@@ -45,58 +35,47 @@
 </div></div>
 
 
-     {% if recommended_schools %}
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Rank</th>
-            <th scope="col">School</th>
-            <th scope="col">Tuition Fee</th>
-            <th scope="col">Location</th>
-            <th scope="col">{{ year }} Predicted Passing Rate</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for school in recommended_schools %}
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ school['School'] }}</td>
-                <td>{{ school['Tuition_Fee'] }}</td>
-                <td>{{ school['Location'] }}</td>
-                <td>
-                    {% if school['PR1']|int %}
-                        {{ school['PR1'] }}%
-                    {% else %}
-                        Insufficient data
-                    {% endif %}
-                </td>
+                <th scope="col">Rank</th>
+                <th scope="col">School</th>
+                <th scope="col">Tuition Fee</th>
+                <th scope="col">Location</th>
+                <th scope="col">{{ year }} Predicted Passing Rate</th>
+{#                <th scope="col">Passing Rate 2</th>#}
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <div class="modal fade" id="basicModal" tabindex="-1" data-bs-show="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">No schools to recommend</h5>
-                </div>
-                <div class="modal-body">
-                    Unfortunately, there are no schools to recommend based on the criteria you provided.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="submit" onclick="location.href='/home'">Submit new form</button>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endif %}
+            </thead>
+            <tbody>
+            {% for school in recommended_schools %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ school['School'] }}</td>
+                    <td>{{ school['Tuition_Fee'] }}</td>
+                    <td>{{ school['Location'] }}</td>
+                    <td>
+                        {% if school['PR1']|int %}
+                            {{ school['PR1'] }}%
+                        {% else %}
+                            {{ school['PR1'] }}
+                        {% endif %}
+                    </td>
+{#                    <td>#}
+{#                        {% if school['PR2']|int %}#}
+{#                            {{ school['PR2'] }}%#}
+{#                        {% else %}#}
+{#                            {{ school['PR2'] }}#}
+{#                        {% endif %}#}
+{#                    </td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
+        <!-- End Table with stripped rows -->
 
-
-
-<h6 class="card-title"> *Predicted Passing Rate based on data from 2010-2022</h6>
+                <h6 class="card-title"> *Insufficient data =<span>  not enough data from PRC board results from 2010-2022</span></h6>
         <button class="btn btn-primary" type="submit" onclick="location.href='/home'">Submit new form</button>
     </main>
 {% endblock %}
