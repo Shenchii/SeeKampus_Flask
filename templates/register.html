@@ -17,22 +17,24 @@
         </div><!-- End Page Title -->
 
         <div class="card">
-  <div class="card-body">
-    <br>
-  <div class="justify-content-center">
-      <h5>User's Preferences</h5><br>
-    <label for="course" class="form-label">Course: {{ course }}</label><br>
-    <label for="tuition_fee" class="form-label">Tuition Fee: {{ tuition_fee }}</label><br>
-      <label for="location" class="form-label">(Or) Location:  {{ location }}</label><br>
-      <label for="validationCustom04" class="form-label">Predicted Year: {{ year }}</label><br>
-  </div>
-
-
-
-
-
-
-</div></div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <h5>User's Preferences</h5>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course: {{ course }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="tuition_fee">Tuition Fee: {{ tuition_fee }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="location">(or) Location: {{ location }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom04">Predicted Year: {{ year }}</label>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Table with stripped rows -->
@@ -44,7 +46,7 @@
                 <th scope="col">Tuition Fee</th>
                 <th scope="col">Location</th>
                 <th scope="col">{{ year }} Predicted Passing Rate</th>
-{#                <th scope="col">Passing Rate 2</th>#}
+                {#                <th scope="col">Passing Rate 2</th>#}
             </tr>
             </thead>
             <tbody>
@@ -58,16 +60,9 @@
                         {% if school['PR1']|int %}
                             {{ school['PR1'] }}%
                         {% else %}
-                            {{ school['PR1'] }}
+                            Insufficient data
                         {% endif %}
                     </td>
-{#                    <td>#}
-{#                        {% if school['PR2']|int %}#}
-{#                            {{ school['PR2'] }}%#}
-{#                        {% else %}#}
-{#                            {{ school['PR2'] }}#}
-{#                        {% endif %}#}
-{#                    </td>#}
                 </tr>
             {% endfor %}
             </tbody>
@@ -75,7 +70,8 @@
 
         <!-- End Table with stripped rows -->
 
-                <h6 class="card-title"> *Insufficient data =<span>  not enough data from PRC board results from 2010-2022</span></h6>
+
+        <h6 class="card-title"> *Predicted Passing Rate based on data from 2010-2022</h6>
         <button class="btn btn-primary" type="submit" onclick="location.href='/home'">Submit new form</button>
     </main>
 {% endblock %}
