@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {{ super() }}
 {% block title %}
-    <title>Results</title>
+    <title>Recommend by Schools</title>
 {% endblock %}
 {% block sidebar %}
     <aside id="sidebar" class="sidebar">
@@ -257,102 +257,81 @@
 {% block content %}
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Recommended Results</h1>
+            <h1>Recommend By School</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item active">Recommended Results</li>
+                    <li class="breadcrumb-item active">Recommend by School</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
+        <!-- Custom Styled Validation -->
         <div class="card">
-            <div class="card-body"><br>
-                <div class="d-flex justify-content-center">
-                    <h5>User's Preferences</h5>
-                </div>
-                <div class="form-group">
-                    <label for="course">Course: {{ course }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="tuition_fee">Tuition Fee: {{ tuition_fee }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="location">(or) Location: {{ location }}</label>
-                </div>
+            <div class="card-body">
+                <br>
+                <form method="POST" action="/recommended-schools" class="row g-4 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="course" class="form-label">Course</label>
+                        <select class="form-select" id="course" name="course" required>
+                            <option selected disabled value="">Select Course</option>
+                            <option>Bachelor of Elementary Education</option>
+                            <option>Bachelor of Science in Accountancy</option>
+                            <option>Bachelor of Science in Architecture</option>
+                            <option>Bachelor of Science in Civil Engineering</option>
+                            <option>Bachelor of Science in Criminology</option>
+                            <option>Bachelor of Science in Electrical Engineering</option>
+                            <option>Bachelor of Science in Electronics Engineering</option>
+                            <option>Bachelor of Science in Mechanical Engineering</option>
+                            <option>Bachelor of Science in Nursing</option>
+                            <option>Bachelor of Science in Psychology</option>
+                            <option>Bachelor of Secondary Education</option>
+                            <option>Bachelor of Secondary Education Major in English</option>
+                            <option>Bachelor of Secondary Education Major in Filipino</option>
+                            <option>Bachelor of Secondary Education Major in Mathematics</option>
+                            <option>Bachelor of Secondary Education Major in Social Studies</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Course.
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <label for="tuition_fee" class="form-label">Tuition Fee</label>
+                        <select class="form-select" id="tuition_fee" name="tuition_fee" required>
+                            <option selected disabled value="">Select Tuition</option>
+                            <option>Free Tuition</option>
+                            <option>0 - 20000</option>
+                            <option>21000 - 40000</option>
+                            <option>41000 - 60000</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid input.
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <label for="location" class="form-label">Location</label>
+                        <select class="form-select" id="location" name="location" required>
+                            <option selected disabled value="">Select Location</option>
+                            <option>Laguna</option>
+                            <option>Brgy. Bucal</option>
+                            <option>Brgy. Halang</option>
+                            <option>Brgy. III</option>
+                            <option>Brgy. Makiling</option>
+                            <option>Brgy. Paciano Rizal</option>
+                            <option>Brgy. Parian</option>
+                            <option>Brgy. VII</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Location.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
             </div>
         </div>
 
 
-        <!-- Table with stripped rows -->
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">School</th>
-                <th scope="col">Tuition Fee</th>
-                <th scope="col">City</th>
-                    <th scope="col">Passing Rates</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for school in recommended_schools %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ school['School'] }}</td>
-                    <td>{{ school['Tuition_Fee'] }}</td>
-                    <td>{{ school['City'] }}</td>
-                                        <td>{{ school['yhat_values'] }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <!-- End Table with stripped rows -->
-        {% block chart %}
-        <div class="card-body">
-            <h5 class="card-title">Performances of Schools in <span>/ {{ location }}</span></h5>
-
-              <!-- Line Chart -->
-              <div id="lineChart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new ApexCharts(document.querySelector("#lineChart"), {
-                    series: [{
-                      name: "Desktops",
-                      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-                    }],
-                    chart: {
-                      height: 350,
-                      type: 'line',
-                      zoom: {
-                        enabled: false
-                      }
-                    },
-                    dataLabels: {
-                      enabled: false
-                    },
-                    stroke: {
-                      curve: 'straight'
-                    },
-                    grid: {
-                      row: {
-                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                        opacity: 0.5
-                      },
-                    },
-                    xaxis: {
-                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-                    }
-                  }).render();
-                });
-              </script>
-              <!-- End Line Chart -->
-
-        </div>
-        {% endblock %}
-
-        <h6 class="card-title"> *Predicted Passing Rate based on data from 2010-2022</h6>
-        <button class="btn btn-primary" type="submit" onclick="location.href='/home'">Submit new form</button>
+        <!-- End Custom Styled Validation -->
     </main>
 {% endblock %}

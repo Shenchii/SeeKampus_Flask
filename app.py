@@ -1,13 +1,14 @@
 import joblib
 import numpy as np
 import pandas as pd
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_admin import Admin
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-from flask_login import UserMixin, login_user, LoginManager, logout_user, current_user
+from flask_login import UserMixin, login_user, LoginManager, logout_user, current_user, login_required
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sklearn.tree import DecisionTreeClassifier
+import prophet as Prophet
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -16,12 +17,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SeeKampus.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+
 admin = Admin(app, name='SeeKampus', template_mode='bootstrap3')
 
 le = joblib.load('label_encoder.joblib')
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
+
+
+class MyView(AdminIndexView):
+    def __init__(self, name, endpoint, **kwargs):
+        super(MyView, self).__init__(name, endpoint, **kwargs)
+        self.template_mode = 'my_template'
+
+    def index(self):
+        return render_template("admin.html")
 
 
 class AdminAccount(db.Model, UserMixin):
@@ -40,6 +51,7 @@ class DTSchool(db.Model):
     Course = db.Column(db.String(255))
     Tuition_Fee = db.Column(db.String(255))
     Location = db.Column(db.String(255))
+    City = db.Column(db.String(255))
     School = db.Column(db.String(255))
 
     def __repr__(self):
@@ -51,19 +63,11 @@ class ScProfiles(db.Model):
     School = db.Column(db.String(255))
     Tuition_Fee = db.Column(db.String(255))
     Location = db.Column(db.String(255))
+    City = db.Column(db.String(255))
     Course = db.Column(db.String(255))
-    PR_2023 = db.Column(db.String(255))
-    PR_2024 = db.Column(db.String(255))
-    PR_2025 = db.Column(db.String(255))
-    PR_2026 = db.Column(db.String(255))
-    PR_2027 = db.Column(db.String(255))
-    PR_2028 = db.Column(db.String(255))
-    PR_2029 = db.Column(db.String(255))
-    PR_2030 = db.Column(db.String(255))
 
     def __repr__(self):
         return '<ScProfiles %r>' % self.id
-
 
 
 @login_manager.user_loader
@@ -74,22 +78,53 @@ def load_user(user_id):
 admin.add_view(ModelView(ScProfiles, db.session))
 
 
+# @app.route('/upload', methods=['POST'])
+# def upload_file():
+#     file = request.files['file']
+#     if file.filename.endswith('.csv'):
+#         df = pd.read_csv(file)
+#         # do something with the dataframe, e.g. store it in a database
+#         return "CSV file uploaded and processed."
+#     return "Invalid file type. Please upload a CSV file."
+
+
 @app.route('/')
 def index():  # put application's code here
     return render_template('home.html')
 
 
-@app.route('/register')
+@app.route('/recommend-by-school')
+def recommend_by_school():
+    return render_template('recommend-by-school.html')
+
+
+@app.route('/recommended-schools')
 def another():
-    return redirect(url_for('/home'))
+    return redirect(url_for('/recommended-schools'))
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/recommended-schools', methods=['POST'])
 def register():
     course = request.form['course']
     tuition_fee = request.form['tuition_fee']
     location = request.form['location']
-    year = request.form['year']
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-accountancy.csv',
+        'Bachelor of Elementary Education': 'hd-EED.csv',
+        'Bachelor of Science in Architecture': 'hd-Archi.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil.csv',
+        'Bachelor of Science in Criminology': 'hd-Crim.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Secondary Education': 'hd-SED.csv',
+        'Bachelor of Secondary Education Major in English': 'hd-SED.csv',
+        'Bachelor of Secondary Education Major in Filipino': 'hd-SED.csv',
+        'Bachelor of Secondary Education Major in Mathematics': 'hd-SED.csv',
+        'Bachelor of Secondary Education Major in Social Studies': 'hd-SED.csv'
+    }
 
     # Create a mapping dictionary that maps each possible course value to its corresponding index
     course_mapping = {
@@ -120,6 +155,7 @@ def register():
 
     # Create a mapping dictionary that maps each possible location value to its corresponding index
     location_mapping = {
+        'Laguna': 0,
         'Brgy. Bucal': 0,
         'Brgy. Halang': 1,
         'Brgy. III': 2,
@@ -143,7 +179,7 @@ def register():
         else:
             pass
 
-    X = school_data.drop(columns=['School', 'id'])
+    X = school_data.drop(columns=['School', 'id', 'City'])
     y = school_data['School']
 
     dt_model = DecisionTreeClassifier()
@@ -159,44 +195,72 @@ def register():
     schools_flat = schools.flatten()
 
     school_data = pd.read_sql_query(db.session.query(DTSchool).filter(
-    (DTSchool.Course == course) & (DTSchool.Tuition_Fee == tuition_fee) | (DTSchool.Location == location)
+        (DTSchool.Course == course) & (DTSchool.Tuition_Fee == tuition_fee) & (DTSchool.Location == location)
     ).statement, db.session.bind)
 
-
     # Convert the integer labels back into the original string labels
-    recommended_schools = school_data['School']
-    recommended_schools = get_school_profiles(recommended_schools, year)
+    schools = school_data['School'].tolist()
+    df = pd.read_csv(be_course[course])
+
+    df['Year'] = df['Time Date'].apply(lambda x: str(x)[-4:])
+    df['Month'] = df['Time Date'].apply(lambda x: str(x)[-6:-4])
+    df['Day'] = df['Time Date'].apply(lambda x: str(x)[:-6])
+    df['ds'] = pd.DatetimeIndex(df['Year'] + '-' + df['Month'] + '-' + df['Day'])
+    all_yhat_values = []
+    for school in schools:
+        df_school = df[df['School'] == school]
+        df_school.drop(['Time Date', 'School', 'Course', 'Year', 'Month', 'Day'], axis=1, inplace=True)
+        df_school.columns = ['y', 'ds']
+
+        m = Prophet.Prophet(interval_width=0.95)
+        m.add_seasonality(name='yearly', period=365.25, fourier_order=10)
+        m.add_seasonality(name='semi-annual', period=365.25 / 2, fourier_order=10)
+        _model = m.fit(df_school)
+
+        # Get the latest date in the original data frame
+        latest_date = df_school['ds'].max()
+
+        # Get the range of dates for the future data frame
+        start_date = latest_date - pd.DateOffset(years=5)
+        end_date = latest_date + pd.DateOffset(years=5)
+        future_dates = pd.date_range(start_date, end_date, freq='Y')
+
+        # Create the future data frame
+        _future = pd.DataFrame({'ds': future_dates})
+
+        # Get predictions for those specific dates
+        _forecast = m.predict(_future)
+        _forecast['yhat'] = _forecast['yhat'].clip(lower=0, upper=100).round()
+        yhat_values = _forecast['yhat'].tolist()
+        all_yhat_values.append(yhat_values)
+
+    recommended_schools = get_school_profiles(schools, all_yhat_values)
     if not recommended_schools:
         return redirect(url_for('no_schools'))
     else:
-        return render_template('register.html', recommended_schools=recommended_schools, year=year, course=course,
-                               tuition_fee=tuition_fee, location=location)
+        return render_template('recommended-schools.html', recommended_schools=recommended_schools, course=course,
+                               be_course=be_course, schools=schools,
+                               tuition_fee=tuition_fee, location=location, all_yhat_values=all_yhat_values)
+
+
+def get_school_profiles(schools, all_yhat_values):
+    school_profiles = []
+    for i, school in enumerate(schools):
+        school_profile = DTSchool.query.filter_by(School=school).first()
+        if school_profile:
+            school_profiles.append({
+                'School': school_profile.School,
+                'Tuition_Fee': school_profile.Tuition_Fee,
+                'City': school_profile.City,
+                'yhat_values': all_yhat_values[i]
+            })
+
+    return school_profiles
 
 
 @app.route('/no_schools')
 def no_schools():
     return render_template('no_school_found.html')
-
-
-def get_school_profiles(recommended_schools, year):
-    school_profiles = []
-    for school in recommended_schools:
-        school_profile = ScProfiles.query.filter_by(School=school).first()
-        if school_profile:
-            pr1_column = 'PR_' + year
-            school_profiles.append({
-                'School': school_profile.School,
-                'Tuition_Fee': school_profile.Tuition_Fee,
-                'Location': school_profile.Location,
-                'Course': school_profile.Course,
-                'PR_' + year: getattr(school_profile, pr1_column)
-            })
-
-    # Sort the schools by PR1, with 'Insufficient Data' at the bottom
-    school_profiles = sorted(school_profiles, key=lambda x: 0 if x['PR_' + year] == 'Insufficient Data' else float(x['PR_'+ year]),
-                             reverse=True)
-
-    return school_profiles
 
 
 @app.route('/home')
@@ -229,7 +293,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    logout_user()
+    session.clear()
     return redirect(url_for('login'))
 
 
