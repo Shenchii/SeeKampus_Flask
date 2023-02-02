@@ -14,15 +14,9 @@ for _, row in df.iterrows():
     school.School = row['School']
     school.Tuition_Fee = row['Tuition Fee']
     school.Location = row['Location']
+    school.City = row['City']
     school.Course = row['Course']
-    school.PR_2023 = row['PR_2023']
-    school.PR_2024 = row['PR_2024']
-    school.PR_2025 = row['PR_2025']
-    school.PR_2026 = row['PR_2026']
-    school.PR_2027 = row['PR_2027']
-    school.PR_2028 = row['PR_2028']
-    school.PR_2029 = row['PR_2029']
-    school.PR_2030 = row['PR_2030']
+
 
 
     # Add the instance to the database and commit the changes
