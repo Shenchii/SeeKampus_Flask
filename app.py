@@ -222,7 +222,7 @@ def register():
 
         # Get the range of dates for the future data frame
         start_date = latest_date - pd.DateOffset(years=5)
-        end_date = latest_date + pd.DateOffset(years=5)
+        end_date = latest_date + pd.DateOffset(years=1)
         future_dates = pd.date_range(start_date, end_date, freq='Y')
 
         # Create the future data frame

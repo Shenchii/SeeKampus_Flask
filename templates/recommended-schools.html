@@ -16,14 +16,14 @@
 
             <li class="nav-item">
                 <a class="nav-link " href="/recommend-by-school">
-                    <i class="bi bi-house-door"></i>
+                    <i class="bi bi-menu-button-wide"></i>
                     <span>Recommend by School</span>
                 </a>
             </li><!-- End Recommend by School Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/recommend-by-course">
-                    <i class="bi bi-house-door"></i>
+                    <i class="bi bi-menu-button-wide"></i>
                     <span>Recommend by Course</span>
                 </a>
             </li><!-- End Recommend by Course Nav -->
@@ -292,7 +292,7 @@
                 <th scope="col">School</th>
                 <th scope="col">Tuition Fee</th>
                 <th scope="col">City</th>
-                    <th scope="col">Passing Rates</th>
+{#                    <th scope="col">Passing Rates</th>#}
             </tr>
             </thead>
             <tbody>
@@ -302,54 +302,74 @@
                     <td>{{ school['School'] }}</td>
                     <td>{{ school['Tuition_Fee'] }}</td>
                     <td>{{ school['City'] }}</td>
-                                        <td>{{ school['yhat_values'] }}</td>
+{#                                        <td>{{ school['yhat_values'] }}</td>#}
                 </tr>
             {% endfor %}
             </tbody>
         </table>
         <!-- End Table with stripped rows -->
         {% block chart %}
-        <div class="card-body">
-            <h5 class="card-title">Performances of Schools in <span>/ {{ location }}</span></h5>
+            <div class="card-body">
+                <h5 class="card-title">Schools Performance for {{ course }} <span>/ {{ location }}</span></h5>
 
-              <!-- Line Chart -->
-              <div id="lineChart"></div>
+                <!-- Line Chart / LET PASSERS -->
+                <div id="reportsChart"></div>
 
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new ApexCharts(document.querySelector("#lineChart"), {
-                    series: [{
-                      name: "Desktops",
-                      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-                    }],
-                    chart: {
-                      height: 350,
-                      type: 'line',
-                      zoom: {
-                        enabled: false
-                      }
-                    },
-                    dataLabels: {
-                      enabled: false
-                    },
-                    stroke: {
-                      curve: 'straight'
-                    },
-                    grid: {
-                      row: {
-                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                        opacity: 0.5
-                      },
-                    },
-                    xaxis: {
-                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-                    }
-                  }).render();
-                });
-              </script>
-              <!-- End Line Chart -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
 
-        </div>
+                        new ApexCharts(document.querySelector("#reportsChart"), {
+                            series: [
+                                {% for school in recommended_schools %}
+                                    {
+                                        name: '{{ school.School }}',
+                                        data: {{ school.yhat_values|tojson }},
+                                    },
+                                {% endfor %}
+                            ],
+                            chart: {
+                                height: 350,
+                                type: 'area',
+                                toolbar: {
+                                    show: false
+                                },
+                            },
+                            markers: {
+                                size: 4
+                            },
+                            colors: ['#4154f1', '#2eca6a', '#ff771d', '#c02a2a', '#ff0000', '#c023da' ],
+                            fill: {
+                                type: "gradient",
+                                gradient: {
+                                    shadeIntensity: 1,
+                                    opacityFrom: 0.3,
+                                    opacityTo: 0.4,
+                                    stops: [0, 90, 100]
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false
+                            },
+                            stroke: {
+                                curve: 'smooth',
+                                width: 2
+                            },
+                            xaxis: {
+                                type: 'datetime',
+                                categories: ['2017', '2018', '2019', '2020', '2021', '2022', '2023']
+                            },
+                            tooltip: {
+                                x: {
+                                    format: 'year'
+                                },
+                            }
+                        }).render();
+                    });
+                </script>
+                <!-- End Line Chart -->
+
+            </div>
+
         {% endblock %}
 
         <h6 class="card-title"> *Predicted Passing Rate based on data from 2010-2022</h6>

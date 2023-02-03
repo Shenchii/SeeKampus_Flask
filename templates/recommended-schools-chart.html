@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {{ super() }}
+{% block title %}
+    <title>Results</title>
+{% endblock %}
+{% block sidebar %}
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/home">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li><!-- End Home Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link " href="/recommend-by-school">
+                    <i class="bi bi-house-door"></i>
+                    <span>Recommend by School</span>
+                </a>
+            </li><!-- End Recommend by School Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/recommend-by-course">
+                    <i class="bi bi-house-door"></i>
+                    <span>Recommend by Course</span>
+                </a>
+            </li><!-- End Recommend by Course Nav -->
+
+
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+{% endblock %}
+{% block content %}
+<p>{{ school_pr }}</p>
+        {% block chart %}
+        <div class="card-body">
+            <h5 class="card-title">Performances of Schools in <span>/ {{ location }}</span></h5>
+
+            <!-- Line Chart / Performances of Schools -->
+            <div id="reportsChart"></div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                            name: 'Passers',
+                            data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                            name: 'Waiting',
+                            data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                            name: 'Failed',
+                            data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                            height: 350,
+                            type: 'area',
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        markers: {
+                            size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d', '#ff4b4b'],
+                        fill: {
+                            type: "gradient",
+                            gradient: {
+                                shadeIntensity: 1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.4,
+                                stops: [0, 90, 100]
+                            }
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        stroke: {
+                            curve: 'smooth',
+                            width: 2
+                        },
+                        xaxis: {
+                            type: 'datetime',
+                            categories: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+                        },
+                        tooltip: {
+                            x: {
+                                format: 'year'
+                            },
+                        }
+                    }).render();
+                });
+            </script>
+            <!-- End Line Chart -->
+
+        </div>
+        {% endblock %}
+
+{% endblock %}
