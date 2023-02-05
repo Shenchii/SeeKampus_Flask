@@ -1,47 +1,439 @@
-School,Location,City,Tuition Fee,Course
-AMA Computer College,Laguna,Calamba City,"22,000.00",Bachelor of Science in Accountancy
-Calamba Doctor's College,Laguna,Calamba City,"46,940.00",Bachelor of Science in Accountancy
-Calamba Doctor's College,Laguna,Calamba City,"46,940.00",Bachelor of Elementary Education
-Calamba Doctor's College,Laguna,Calamba City,"46,940.00",Bachelor of Secondary Education
-Calamba Doctor's College,Laguna,Calamba City,"38,347.00",Bachelor of Science in Psychology
-Calamba Doctor's College,Laguna,Calamba City,"52,737.00",Bachelor of Science in Nursing
-City College of Calamba,Laguna,Calamba City,Free Tuition,Bachelor of Science in Accountancy
-City College of Calamba,Laguna,Calamba City,Free Tuition,Bachelor of Elementary Education
-City College of Calamba,Laguna,Calamba City,Free Tuition,Bachelor of Secondary Education
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Accountancy
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Elementary Education
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Secondary Education
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Psychology
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Electronics Engineering
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Electrical Engineering
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Nursing
-Colegio de San Juan de Letran,Laguna,Calamba City,"40,000 to 55,000",Bachelor of Science in Mechanical Engineering
-Laguna College Of Business And Arts,Laguna,Calamba City,"44,000 to 50,000",Bachelor of Science in Accountancy
-Laguna College Of Business And Arts,Laguna,Calamba City,"44,000 to 50,000",Bachelor of Elementary Education
-Laguna College Of Business And Arts,Laguna,Calamba City,"44,000 to 50,000",Bachelor of Secondary Education
-Laguna College Of Business And Arts,Laguna,Calamba City,"44,000 to 50,000",Bachelor of Science in Psychology
-Lyceum of the Philippines University,Laguna,Calamba City,"41,000 to 43,000",Bachelor of Science in Accountancy
-Lyceum of the Philippines University,Laguna,Calamba City,"32,000 to 34,000",Bachelor of Science in Psychology
-Lyceum of the Philippines University,Laguna,Calamba City,"56,000 to 58,000",Bachelor of Science in Nursing
-Lyceum of the Philippines University,Laguna,Calamba City,"43,000 to 45,000",Bachelor of Science in Civil Engineering
-Lyceum of the Philippines University,Laguna,Calamba City,"41,000 to 44,000",Bachelor of Science in Electrical Engineering
-Saint John Colleges,Laguna,Calamba City,"16,895.25 to 22,207.75",Bachelor of Science in Accountancy
-Saint John Colleges,Laguna,Calamba City,"11,574 to 20,423",Bachelor of Elementary Education
-Saint John Colleges,Laguna,Calamba City,"14,146.75 to 19,709.25",Bachelor of Science in Psychology
-Saint John Colleges,Laguna,Calamba City,"11,574 to 20,228.25",Bachelor of Secondary Education Major in Social Studies
-Saint John Colleges,Laguna,Calamba City,"11,574 to 19,736.75",Bachelor of Secondary Education Major in English
-Saint John Colleges,Laguna,Calamba City,"12,817.75 to 20,228.25",Bachelor of Secondary Education Major in Filipino
-Saint John Colleges,Laguna,Calamba City,"11,574 to 18,907.50",Bachelor of Secondary Education Major in Mathematics
-Saints John and Paul Colleges,Laguna,Calamba City,"25,765.00",Bachelor of Science in Psychology
-Saints John and Paul Colleges,Laguna,Calamba City,"25,765.00",Bachelor of Science in Nursing
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Accountancy
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Elementary Education
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Secondary Education
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Psychology
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Civil Engineering
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Electronics Engineering
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Electrical Engineering
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Nursing
-University of Perpetual Help System Dalta,Laguna,Calamba City,"50,000 to 60,000",Bachelor of Science in Mechanical Engineering
-University of Perpetual Help System Dalta,Laguna,Calamba City,"45,000 to 65,000",Bachelor of Science in Architecture
-University of Perpetual Help System Dalta,Laguna,Calamba City,"40,000 to 50,000",Bachelor of Science in Criminology
+School,Location,City,TRange,Tuition Fee,Course
+AMA Computer College,Laguna,"Calamba City, Laguna",0 - 20000,"22,000.00",Bachelor of Science in Accountancy
+Calamba Doctor's College,Laguna,"Calamba City, Laguna",41000 - 60000,"46,940.00",Bachelor of Science in Accountancy
+Calamba Doctor's College,Laguna,"Calamba City, Laguna",41000 - 60000,"46,940.00",Bachelor of Elementary Education
+Calamba Doctor's College,Laguna,"Calamba City, Laguna",41000 - 60000,"46,940.00",Bachelor of Secondary Education
+Calamba Doctor's College,Laguna,"Calamba City, Laguna",41000 - 60000,"38,347.00",Bachelor of Science in Psychology
+Calamba Doctor's College,Laguna,"Calamba City, Laguna",41000 - 60000,"52,737.00",Bachelor of Science in Nursing
+City College of Calamba,Laguna,"Calamba City, Laguna",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+City College of Calamba,Laguna,"Calamba City, Laguna",Free Tuition,Free Tuition,Bachelor of Elementary Education
+City College of Calamba,Laguna,"Calamba City, Laguna",Free Tuition,Free Tuition,Bachelor of Secondary Education
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Accountancy
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Elementary Education
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Secondary Education
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Psychology
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Electronics Engineering
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Electrical Engineering
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Nursing
+Colegio de San Juan de Letran,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 55,000",Bachelor of Science in Mechanical Engineering
+Laguna College Of Business And Arts,Laguna,"Calamba City, Laguna",41000 - 60000,"44,000 to 50,000",Bachelor of Science in Accountancy
+Laguna College Of Business And Arts,Laguna,"Calamba City, Laguna",41000 - 60000,"44,000 to 50,000",Bachelor of Elementary Education
+Laguna College Of Business And Arts,Laguna,"Calamba City, Laguna",41000 - 60000,"44,000 to 50,000",Bachelor of Secondary Education
+Laguna College Of Business And Arts,Laguna,"Calamba City, Laguna",41000 - 60000,"44,000 to 50,000",Bachelor of Science in Psychology
+Lyceum of the Philippines University,Laguna,"Calamba City, Laguna",41000 - 60000,"41,000 to 43,000",Bachelor of Science in Accountancy
+Lyceum of the Philippines University,Laguna,"Calamba City, Laguna",21000 - 40000,"32,000 to 34,000",Bachelor of Science in Psychology
+Lyceum of the Philippines University,Laguna,"Calamba City, Laguna",41000 - 60000,"56,000 to 58,000",Bachelor of Science in Nursing
+Lyceum of the Philippines University,Laguna,"Calamba City, Laguna",41000 - 60000,"43,000 to 45,000",Bachelor of Science in Civil Engineering
+Lyceum of the Philippines University,Laguna,"Calamba City, Laguna",41000 - 60000,"41,000 to 44,000",Bachelor of Science in Electrical Engineering
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"16,895.25 to 22,207.75",Bachelor of Science in Accountancy
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"11,574 to 20,423",Bachelor of Elementary Education
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"14,146.75 to 19,709.25",Bachelor of Science in Psychology
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"11,574 to 20,228.25",Bachelor of Secondary Education Major in Social Studies
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"11,574 to 19,736.75",Bachelor of Secondary Education Major in English
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"12,817.75 to 20,228.25",Bachelor of Secondary Education Major in Filipino
+Saint John Colleges,Laguna,"Calamba City, Laguna",0 - 20000,"11,574 to 18,907.50",Bachelor of Secondary Education Major in Mathematics
+Saints John and Paul Colleges,Laguna,"Calamba City, Laguna",21000 - 40000,"25,765.00",Bachelor of Science in Psychology
+Saints John and Paul Colleges,Laguna,"Calamba City, Laguna",21000 - 40000,"25,765.00",Bachelor of Science in Nursing
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Accountancy
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Elementary Education
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Secondary Education
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Psychology
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Civil Engineering
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Electronics Engineering
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Electrical Engineering
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Nursing
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"50,000 to 60,000",Bachelor of Science in Mechanical Engineering
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"45,000 to 65,000",Bachelor of Science in Architecture
+University of Perpetual Help System Dalta,Laguna,"Calamba City, Laguna",41000 - 60000,"40,000 to 50,000",Bachelor of Science in Criminology
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Criminology
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Psychology
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Civil Engineering
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Electronics Engineering
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Electrical Engineering
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Elementary Education
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Secondary Education
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Accountancy
+University of Batangas,Batangas,"Batangas City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Nursing
+Batangas State University - Alangilan Campus,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Chemical Engineering
+Batangas State University - Alangilan Campus,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Batangas State University - Alangilan Campus,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+Batangas State University - Alangilan Campus,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Electronics Engineering
+Batangas State University - Alangilan Campus,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Mechanical Engineering
+Batangas State University,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Batangas State University,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Batangas State University,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Batangas State University,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Nursing
+Batangas State University,Batangas,"Batangas City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+La Consolacion College - Tanauan,Batangas,"Tanauan City, Batangas",41000 - 60000,"48,000-52,000",Bachelor of Science in Elementary Education
+La Consolacion College - Tanauan,Batangas,"Tanauan City, Batangas",41000 - 60000,"48,000-52,000",Bachelor of Science in Secondary Education
+La Consolacion College - Tanauan,Batangas,"Tanauan City, Batangas",41000 - 60000,"48,000-52,000",Bachelor of Science in Accountancy
+La Consolacion College - Tanauan,Batangas,"Tanauan City, Batangas",41000 - 60000,"48,000-52,000",Bachelor of Science in Psychology
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Nursing
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Criminology
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Psychology
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Accountancy
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Elementary Education
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Secondary Education
+First Asia Institute of Technology and Humanities,Batangas,"Tanauan City, Batangas",81000 - 100000,"80,000-100,000",Bachelor of Science in Electronics Engineering
+Christian College of Tanauan,Batangas,"Tanauan City, Batangas",150000 above,"30,000-330,000",Bachelor of Science in Elementary Education
+Christian College of Tanauan,Batangas,"Tanauan City, Batangas",150000 above,"30,000-330,000",Bachelor of Science in Secondary Education
+Christian College of Tanauan,Batangas,"Tanauan City, Batangas",150000 above,"30,000-330,000",Bachelor of Science in Accountancy
+Christian College of Tanauan,Batangas,"Tanauan City, Batangas",150000 above,"30,000-330,000",Bachelor of Science in Criminology
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Accountancy
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Elementary Education
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Secondary Education
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Electrical Engineering
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Nursing
+De La Salle Lipa,Batangas,"Lipa City, Batangas",101000 - 120000,"90,000-120,000",Bachelor of Science in Psychology
+Kolehiyo ng Lungsod ng Lipa,Batangas,"Lipa City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Kolehiyo ng Lungsod ng Lipa,Batangas,"Lipa City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Kolehiyo ng Lungsod ng Lipa,Batangas,"Lipa City, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+University of Batangas - Lipa City,Batangas,"Lipa City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Criminology
+University of Batangas - Lipa City,Batangas,"Lipa City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Elementary Education
+University of Batangas - Lipa City,Batangas,"Lipa City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Secondary Education
+University of Batangas - Lipa City,Batangas,"Lipa City, Batangas",41000 - 60000,"44,000-50,000",Bachelor of Science in Accountancy
+Batangas State University - Malvar Campus,Batangas,"Malvar, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Batangas State University - Malvar Campus,Batangas,"Malvar, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Batangas State University - Malvar Campus,Batangas,"Malvar, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+Batangas State University - Malvar Campus,Batangas,"Malvar, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Polytechnic University of the Philippines - Sto. Tomas,Batangas,"Sto. Tomas, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Polytechnic University of the Philippines - Sto. Tomas,Batangas,"Sto. Tomas, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+Polytechnic University of the Philippines - Sto. Tomas,Batangas,"Sto. Tomas, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Electronics Engineering
+Polytechnic University of the Philippines - Sto. Tomas,Batangas,"Sto. Tomas, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Nursing
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+Batangas State University - Nasugbu Campus,Batangas,"Nasugbu, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Batangas Eastern Colleges,Batangas,"San Juan, Batangas",0 - 20000,"20,000-24,000",Bachelor of Science in Elementary Education
+Batangas Eastern Colleges,Batangas,"San Juan, Batangas",0 - 20000,"20,000-24,000",Bachelor of Science in Secondary Education
+Batangas Eastern Colleges,Batangas,"San Juan, Batangas",0 - 20000,"20,000-24,000",Bachelor of Science in Accountancy
+Batangas State University - San Juan Campus,Batangas,"San Juan, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Lemery Colleges,Batangas,"Lemery, Batangas",21000 -40000,"26,000-28,000",Bachelor of Science in Elementary Education
+Lemery Colleges,Batangas,"Lemery, Batangas",21000 -40000,"26,000-28,000",Bachelor of Science in Secondary Education
+Lemery Colleges,Batangas,"Lemery, Batangas",21000 -40000,"26,000-28,000",Bachelor of Science in Criminology
+Lemery Colleges,Batangas,"Lemery, Batangas",21000 -40000,"26,000-28,000",Bachelor of Science in Psychology
+Lemery Colleges,Batangas,"Lemery, Batangas",21000 -40000,"26,000-28,000",Bachelor of Science in Pharmacy
+Sta. Teresa College,Batangas,"Bauan, Batangas",21000 -40000,"24,000-30,000",Bachelor of Science in Elementary Education
+Sta. Teresa College,Batangas,"Bauan, Batangas",21000 -40000,"24,000-30,000",Bachelor of Science in Secondary Education
+Sta. Teresa College,Batangas,"Bauan, Batangas",21000 -40000,"24,000-30,000",Bachelor of Science in Psychology
+Rizal College of Taal,Batangas,"Taal, Batangas",21000 -40000,"30,000-36,000",Bachelor of Science in Elementary Education
+Rizal College of Taal,Batangas,"Taal, Batangas",21000 -40000,"30,000-36,000",Bachelor of Science in Secondary Education
+Rizal College of Taal,Batangas,"Taal, Batangas",21000 -40000,"30,000-36,000",Bachelor of Science in Accountancy
+Rizal College of Taal,Batangas,"Taal, Batangas",21000 -40000,"30,000-36,000",Bachelor of Science in Criminology
+Immaculate Concepcion College,Batangas,"Balayan, Batangas",21000 -40000,"30,000-40,000",Bachelor of Science in Elementary Education
+Immaculate Concepcion College,Batangas,"Balayan, Batangas",21000 -40000,"30,000-40,000",Bachelor of Science in Secondary Education
+Immaculate Concepcion College,Batangas,"Balayan, Batangas",21000 -40000,"30,000-40,000",Bachelor of Science in Accountancy
+Batangas State University - Rosario Campus,Batangas,"Rosario, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Batangas State University - Rosario Campus,Batangas,"Rosario, Batangas",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Perpetual Help System DALTA in Molino,Cavite,"Bacoor, Cavite",61000 - 80000,"56,000-64,000",Bachelor of Science in Elementary Education
+University of Perpetual Help System DALTA in Molino,Cavite,"Bacoor, Cavite",61000 - 80000,"56,000-64,000",Bachelor of Science in Secondary Education
+University of Perpetual Help System DALTA in Molino,Cavite,"Bacoor, Cavite",61000 - 80000,"56,000-64,000",Bachelor of Science in Criminology
+University of Perpetual Help System DALTA in Molino,Cavite,"Bacoor, Cavite",61000 - 80000,"56,000-64,000",Bachelor of Science in Accountancy
+St. Dominic College of Asia,Cavite,"Bacoor, Cavite",61000 - 80000,"60,000",Bachelor of Science in Elementary Education
+St. Dominic College of Asia,Cavite,"Bacoor, Cavite",61000 - 80000,"60,000",Bachelor of Science in Secondary Education
+St. Dominic College of Asia,Cavite,"Bacoor, Cavite",61000 - 80000,"60,000",Bachelor of Science in Accountancy
+St. Dominic College of Asia,Cavite,"Bacoor, Cavite",61000 - 80000,"60,000",Bachelor of Science in Nursing
+St. Dominic College of Asia,Cavite,"Bacoor, Cavite",61000 - 80000,"60,000",Bachelor of Science in Psychology
+Cavite State University - Bacoor Campus,Cavite,"Bacoor, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Cavite State University - Bacoor Campus,Cavite,"Bacoor, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+San Sebastian College-Recoletos de Cavite,Cavite,"Cavite City, Cavite",41000 - 60000,"40,000-50,000",Bachelor of Science in Criminology
+San Sebastian College-Recoletos de Cavite,Cavite,"Cavite City, Cavite",41000 - 60000,"40,000-50,000",Bachelor of Science in Accountancy
+San Sebastian College-Recoletos de Cavite,Cavite,"Cavite City, Cavite",41000 - 60000,"40,000-50,000",Bachelor of Science in Nursing
+San Sebastian College-Recoletos de Cavite,Cavite,"Cavite City, Cavite",41000 - 60000,"40,000-50,000",Bachelor of Science in Psychology
+San Sebastian College-Recoletos de Cavite,Cavite,"Cavite City, Cavite",41000 - 60000,"40,000-50,000",Bachelor of Science in Electronics Engineering
+Saint Jude College,Cavite,"Cavite City, Cavite",41000 - 60000,"56,000-62,000",Bachelor of Science in Elementary Education
+Saint Jude College,Cavite,"Cavite City, Cavite",41000 - 60000,"56,000-62,000",Bachelor of Science in Secondary Education
+Saint Jude College,Cavite,"Cavite City, Cavite",41000 - 60000,"56,000-62,000",Bachelor of Science in Accountancy
+Saint Jude College,Cavite,"Cavite City, Cavite",41000 - 60000,"56,000-62,000",Bachelor of Science in Psychology
+Saint Jude College,Cavite,"Cavite City, Cavite",41000 - 60000,"56,000-62,000",Bachelor of Science in Nursing
+St. Joseph College - Cavite City,Cavite,"Cavite City, Cavite",61000 - 80000,"52,000-90,000",Bachelor of Science in Elementary Education
+St. Joseph College - Cavite City,Cavite,"Cavite City, Cavite",61000 - 80000,"52,000-90,000",Bachelor of Science in Secondary Education
+St. Joseph College - Cavite City,Cavite,"Cavite City, Cavite",61000 - 80000,"52,000-90,000",Bachelor of Science in Nursing
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Elementary Education
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Secondary Education
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Criminology
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Accountancy
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Civil Engineering
+Emilio Aguinaldo College - Cavite Campus,Cavite,"Dasmarinas City, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Nursing
+De La Salle University Dasmariñas,Cavite,"Dasmarinas City, Cavite",81000 - 100000,"78,000-110,000",Bachelor of Science in Elementary Education
+De La Salle University Dasmariñas,Cavite,"Dasmarinas City, Cavite",81000 - 100000,"78,000-110,000",Bachelor of Science in Secondary Education
+De La Salle University Dasmariñas,Cavite,"Dasmarinas City, Cavite",81000 - 100000,"78,000-110,000",Bachelor of Science in Criminology
+De La Salle University Dasmariñas,Cavite,"Dasmarinas City, Cavite",81000 - 100000,"78,000-110,000",Bachelor of Science in Accountancy
+National College of Science and Technology,Cavite,"Dasmarinas City, Cavite",41000 - 60000,"40,000-48,000",Bachelor of Science in Secondary Education
+National College of Science and Technology,Cavite,"Dasmarinas City, Cavite",41000 - 60000,"40,000-48,000",Bachelor of Science in Criminology
+National College of Science and Technology,Cavite,"Dasmarinas City, Cavite",41000 - 60000,"40,000-48,000",Bachelor of Science in Accountancy
+National College of Science and Technology,Cavite,"Dasmarinas City, Cavite",41000 - 60000,"40,000-48,000",Bachelor of Science in Psychology
+Eulogio Amang Rodriguez Institute of Science and Technology - Cavite Campus,Cavite,"General Mariano Alvarez, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+Eulogio Amang Rodriguez Institute of Science and Technology - Cavite Campus,Cavite,"General Mariano Alvarez, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Lyceum of the Philippines University - Cavite Campus,Cavite,"General Trias, Cavite",150000 above,"160,000-240,000",Bachelor of Science in Elementary Education
+Lyceum of the Philippines University - Cavite Campus,Cavite,"General Trias, Cavite",150000 above,"160,000-240,000",Bachelor of Science in Secondary Education
+Lyceum of the Philippines University - Cavite Campus,Cavite,"General Trias, Cavite",150000 above,"160,000-240,000",Bachelor of Science in Accountancy
+Lyceum of the Philippines University - Cavite Campus,Cavite,"General Trias, Cavite",150000 above,"160,000-240,000",Bachelor of Science in Civil Engineering
+Lyceum of the Philippines University - Cavite Campus,Cavite,"General Trias, Cavite",150000 above,"160,000-240,000",Bachelor of Science in Psychology
+Imus Institute,Cavite,"Imus, Cavite",61000 - 80000,"50,000-70,000",Bachelor of Science in Elementary Education
+Imus Institute,Cavite,"Imus, Cavite",61000 - 80000,"50,000-70,000",Bachelor of Science in Secondary Education
+Imus Institute,Cavite,"Imus, Cavite",61000 - 80000,"50,000-70,000",Bachelor of Science in Accountancy
+Imus Institute,Cavite,"Imus, Cavite",61000 - 80000,"50,000-70,000",Bachelor of Science in Electronics Engineering
+Southern Philippines Institute of Science & Technology,Cavite,"Imus, Cavite",21000 - 40000,"30,000-34,000",Bachelor of Science in Accountancy
+Southern Philippines Institute of Science & Technology,Cavite,"Imus, Cavite",21000 - 40000,"30,000-34,000",Bachelor of Science in Elementary Education
+Southern Philippines Institute of Science & Technology,Cavite,"Imus, Cavite",21000 - 40000,"30,000-34,000",Bachelor of Science in Secondary Education
+Southern Philippines Institute of Science & Technology,Cavite,"Imus, Cavite",21000 - 40000,"30,000-34,000",Bachelor of Science in Accountancy
+"Southdale International School of Science, Arts and Technology",Cavite,"Imus, Cavite",21000 - 40000,"30,000-36,000",Bachelor of Science in Elementary Education
+"Southdale International School of Science, Arts and Technology",Cavite,"Imus, Cavite",21000 - 40000,"30,000-36,000",Bachelor of Science in Secondary Education
+Cavite State University - Indang Campus,Cavite,"Indang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Cavite State University - Indang Campus,Cavite,"Indang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Cavite State University - Indang Campus,Cavite,"Indang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+Cavite State University - Indang Campus,Cavite,"Indang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Cavite State University - Indang Campus,Cavite,"Indang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Polytechnic University of the Philippines - Maragondon,Cavite,"Maragondon, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Polytechnic University of the Philippines - Maragondon,Cavite,"Maragondon, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Polytechnic University of the Philippines - Maragondon,Cavite,"Maragondon, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Electronics Engineering
+Polytechnic University of the Philippines - Maragondon,Cavite,"Maragondon, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+Polytechnic University of the Philippines - Maragondon,Cavite,"Maragondon, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Mechanical Engineering
+Granby College of Science and Technology,Cavite,"Naic, Cavite",0 - 20000,"12,000-16,000",Bachelor of Science in Elementary Education
+Granby College of Science and Technology,Cavite,"Naic, Cavite",0 - 20000,"12,000-16,000",Bachelor of Science in Secondary Education
+Granby College of Science and Technology,Cavite,"Naic, Cavite",0 - 20000,"12,000-16,000",Bachelor of Science in Criminology
+Cavite State University - Naic Campus,Cavite,"Naic, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Cavite State University - Naic Campus,Cavite,"Naic, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+STI College - Rosario,Cavite,"Rosario, Cavite",41000 - 60000,"40,000-44,000",Bachelor of Science in Accountancy
+Cavite State University - Rosario Campus,Cavite,"Rosario, Cavite",0 - 20000,"18,000-20,000",Bachelor of Science in Secondary Education
+Cavite State University - Rosario Campus,Cavite,"Rosario, Cavite",0 - 20000,"18,000-20,000",Bachelor of Science in Electrical Engineering
+Far Eastern University - Cavite,Cavite,"Silang, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Elementary Education
+Far Eastern University - Cavite,Cavite,"Silang, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Secondary Education
+Far Eastern University - Cavite,Cavite,"Silang, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Accountancy
+Far Eastern University - Cavite,Cavite,"Silang, Cavite",61000 - 80000,"58,000-70,000",Bachelor of Science in Psychology
+Adventist University of the Philippines,Cavite,"Silang, Cavite",81000 - 100000,"80,000-110,000",Bachelor of Science in Elementary Education
+Adventist University of the Philippines,Cavite,"Silang, Cavite",81000 - 100000,"80,000-110,000",Bachelor of Science in Secondary Education
+Adventist University of the Philippines,Cavite,"Silang, Cavite",81000 - 100000,"80,000-110,000",Bachelor of Science in Accountancy
+Adventist University of the Philippines,Cavite,"Silang, Cavite",81000 - 100000,"80,000-110,000",Bachelor of Science in Nursing
+Adventist University of the Philippines,Cavite,"Silang, Cavite",81000 - 100000,"80,000-110,000",Bachelor of Science in Psychology
+Cavite State University - Silang Campus,Cavite,"Silang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Cavite State University - Silang Campus,Cavite,"Silang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Cavite State University - Silang Campus,Cavite,"Silang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Cavite State University - Silang Campus,Cavite,"Silang, Cavite",Free Tuition,Free Tuition,Bachelor of Science in Criminology
+Olivarez College Tagaytay,Cavite,"Tagaytay City, Cavite",21000 - 40000,"36,000-40,000",Bachelor of Science in Elementary Education
+Olivarez College Tagaytay,Cavite,"Tagaytay City, Cavite",21000 - 40000,"36,000-40,000",Bachelor of Science in Criminology
+Olivarez College Tagaytay,Cavite,"Tagaytay City, Cavite",21000 - 40000,"36,000-40,000",Bachelor of Science in Accountancy
+Olivarez College Tagaytay,Cavite,"Tagaytay City, Cavite",21000 - 40000,"36,000-40,000",Bachelor of Science in Nursing
+Trece Martires City College,Cavite,"Trece Martires City, Cavite",0 - 20000,"14,000-16,000",Bachelor of Science in Criminology
+Trece Martires City College,Cavite,"Trece Martires City, Cavite",0 - 20000,"14,000-16,000",Bachelor of Science in Elementary Education
+Trece Martires City College,Cavite,"Trece Martires City, Cavite",0 - 20000,"14,000-16,000",Bachelor of Science in Secondary Education
+University of Makati,NCR,Makati,0 - 20000,"2,000-6,000",Bachelor of Science in Accountancy
+University of Makati,NCR,Makati,0 - 20000,"2,000-6,000",Bachelor of Science in Nursing
+University of Makati,NCR,Makati,0 - 20000,"2,000-6,000",Bachelor of Science in Elementary Education
+University of Makati,NCR,Makati,0 - 20000,"2,000-6,000",Bachelor of Science in Civil Engineering
+University of Makati,NCR,Makati,0 - 20000,"2,000-6,000",Bachelor of Science in Secondary Education
+Centro Escolar University - Makati Gil Puyat,NCR,Makati,61000 - 80000,"70,000-80,000",Bachelor of Science in Accountancy
+Centro Escolar University - Makati Gil Puyat,NCR,Makati,61000 - 80000,"70,000-80,000",Bachelor of Science in Nursing
+Centro Escolar University - Makati Gil Puyat,NCR,Makati,61000 - 80000,"70,000-80,000",Bachelor of Science in Psychology
+Mapúa University - Makati,NCR,Makati,81000 - 100000,"92,000-96,000",Bachelor of Science in Accountancy
+Mapúa University,NCR,Manila,150000 above,"130,000-195,000",Bachelor of Science in Civil Engineering
+Mapúa University,NCR,Manila,150000 above,"130,000-195,000",Bachelor of Science in Psychology
+Mapúa University,NCR,Manila,150000 above,"130,000-195,000",Bachelor of Science in Electronics Engineering
+Mapúa University,NCR,Manila,150000 above,"130,000-195,000",Bachelor of Science in Electrical Engineering
+Mapúa University,NCR,Manila,150000 above,"130,000-195,000",Bachelor of Science in Mechanical Engineering
+Pamantasan ng Lungsod ng Maynila,NCR,Manila,Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Pamantasan ng Lungsod ng Maynila,NCR,Manila,Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Pamantasan ng Lungsod ng Maynila,NCR,Manila,Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Pamantasan ng Lungsod ng Maynila,NCR,Manila,Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Pamantasan ng Lungsod ng Maynila,NCR,Manila,Free Tuition,Free Tuition,Bachelor of Science in Nursing
+De La Salle University,NCR,Manila,150000 above,"205,000-225,000",Bachelor of Science in Elementary Education
+De La Salle University,NCR,Manila,150000 above,"205,000-225,000",Bachelor of Science in Secondary Education
+De La Salle University,NCR,Manila,150000 above,"205,000-225,000",Bachelor of Science in Accountancy
+De La Salle University,NCR,Manila,150000 above,"205,000-225,000",Bachelor of Science in Civil Engineering
+De La Salle University,NCR,Manila,150000 above,"205,000-225,000",Bachelor of Science in Psychology
+Rizal Technological University,NCR,Mandaluyong,Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Rizal Technological University,NCR,Mandaluyong,Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Rizal Technological University,NCR,Mandaluyong,Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Rizal Technological University,NCR,Mandaluyong,Free Tuition,Free Tuition,Bachelor of Science in Psychology
+Rizal Technological University,NCR,Mandaluyong,Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+Arellano University in Mandaluyong,NCR,Mandaluyong,41000 - 60000,"50,000-60,000",Bachelor of Science in Elementary Education
+Arellano University in Mandaluyong,NCR,Mandaluyong,41000 - 60000,"50,000-60,000",Bachelor of Science in Secondary Education
+Arellano University in Mandaluyong,NCR,Mandaluyong,41000 - 60000,"50,000-60,000",Bachelor of Science in Criminology
+Jose Rizal University,NCR,Mandaluyong,41000 - 60000,"40,000-50,000",Bachelor of Science in Elementary Education
+Jose Rizal University,NCR,Mandaluyong,41000 - 60000,"40,000-50,000",Bachelor of Science in Secondary Education
+Jose Rizal University,NCR,Mandaluyong,41000 - 60000,"40,000-50,000",Bachelor of Science in Criminology
+Jose Rizal University,NCR,Mandaluyong,41000 - 60000,"40,000-50,000",Bachelor of Science in Accountancy
+Jose Rizal University,NCR,Mandaluyong,41000 - 60000,"40,000-50,000",Bachelor of Science in Nursing
+Dominican College,NCR,San Juan City,81000 - 100000,"80,000",Bachelor of Science in Secondary Education
+Dominican College,NCR,San Juan City,81000 - 100000,"80,000",Bachelor of Science in Nursing
+Dominican College,NCR,San Juan City,81000 - 100000,"80,000",Bachelor of Science in Psychology
+Polytechnic University Of The Philippines - San Juan City,NCR,San Juan City,Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Polytechnic University Of The Philippines - San Juan City,NCR,San Juan City,Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Arellano University in Pasay,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Elementary Education
+Arellano University in Pasay,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Secondary Education
+Arellano University in Pasay,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Nursing
+Arellano University in Pasay,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Psychology
+Pamantasan ng Lungsod ng Pasay,NCR,Pasay,0 - 20000,"6,000-12,000",Bachelor of Science in Elementary Education
+Pamantasan ng Lungsod ng Pasay,NCR,Pasay,0 - 20000,"6,000-12,000",Bachelor of Science in Secondary Education
+Pamantasan ng Lungsod ng Pasay,NCR,Pasay,0 - 20000,"6,000-12,000",Bachelor of Science in Nursing
+Manila Adventist College,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Accountancy
+Manila Adventist College,NCR,Pasay,41000 - 60000,"50,000-60,000",Bachelor of Science in Nursing
+Olivarez College,NCR,Paranaque City,41000 - 60000,"54,000-64,000",Bachelor of Science in Elementary Education
+Olivarez College,NCR,Paranaque City,41000 - 60000,"54,000-64,000",Bachelor of Science in Secondary Education
+Olivarez College,NCR,Paranaque City,41000 - 60000,"54,000-64,000",Bachelor of Science in Criminology
+Olivarez College,NCR,Paranaque City,41000 - 60000,"54,000-64,000",Bachelor of Science in Accountancy
+Universal Colleges of Paranaque,NCR,Paranaque City,41000 - 60000,"42,000-50,000",Bachelor of Science in Elementary Education
+Universal Colleges of Paranaque,NCR,Paranaque City,41000 - 60000,"42,000-50,000",Bachelor of Science in Secondary Education
+Universal Colleges of Paranaque,NCR,Paranaque City,41000 - 60000,"42,000-50,000",Bachelor of Science in Accountancy
+Universal Colleges of Paranaque,NCR,Paranaque City,41000 - 60000,"42,000-50,000",Bachelor of Science in Nursing
+Immaculate Heart Of Mary College,NCR,Paranaque City,41000 - 60000,"40,000-50,000",Bachelor of Science in Secondary Education
+Immaculate Heart Of Mary College,NCR,Paranaque City,41000 - 60000,"40,000-50,000",Bachelor of Science in Psychology
+Southville International School and Colleges,NCR,Las Pinas,101000 - 120000,"100,000-120,000",Bachelor of Science in Accountancy
+Southville International School and Colleges,NCR,Las Pinas,101000 - 120000,"100,000-120,000",Bachelor of Science in Nursing
+Southville International School and Colleges,NCR,Las Pinas,101000 - 120000,"100,000-120,000",Bachelor of Science in Psychology
+University of Perpetual Help System DALTA in Las Piñas,NCR,Las Pinas,61000 - 80000,"64,000-66,000",Bachelor of Science in Elementary Education
+University of Perpetual Help System DALTA in Las Piñas,NCR,Las Pinas,61000 - 80000,"64,000-66,000",Bachelor of Science in Secondary Education
+University of Perpetual Help System DALTA in Las Piñas,NCR,Las Pinas,61000 - 80000,"64,000-66,000",Bachelor of Science in Criminology
+University of Perpetual Help System DALTA in Las Piñas,NCR,Las Pinas,61000 - 80000,"64,000-66,000",Bachelor of Science in Accountancy
+Bernardo College,NCR,Las Pinas,21000 - 40000,"34,000-38,000",Bachelor of Science in Elementary Education
+Bernardo College,NCR,Las Pinas,21000 - 40000,"34,000-38,000",Bachelor of Science in Secondary Education
+Lyceum of Alabang,NCR,Muntinlupa City,41000 - 60000,"40,000-50,000",Bachelor of Science in Elementary Education
+Lyceum of Alabang,NCR,Muntinlupa City,41000 - 60000,"40,000-50,000",Bachelor of Science in Secondary Education
+Lyceum of Alabang,NCR,Muntinlupa City,41000 - 60000,"40,000-50,000",Bachelor of Science in Criminology
+Lyceum of Alabang,NCR,Muntinlupa City,41000 - 60000,"40,000-50,000",Bachelor of Science in Accountancy
+San Beda College Alabang,NCR,Muntinlupa City,150000 above,"145,000-155,000",Bachelor of Science in Elementary Education
+San Beda College Alabang,NCR,Muntinlupa City,150000 above,"145,000-155,000",Bachelor of Science in Secondary Education
+San Beda College Alabang,NCR,Muntinlupa City,150000 above,"145,000-155,000",Bachelor of Science in Accountancy
+San Beda College Alabang,NCR,Muntinlupa City,150000 above,"145,000-155,000",Bachelor of Science in Psychology
+Pamantasan ng Lungsod ng Muntinlupa,NCR,Muntinlupa City,0 - 20000,"6,000-8,000",Bachelor of Science in Elementary Education
+Pamantasan ng Lungsod ng Muntinlupa,NCR,Muntinlupa City,0 - 20000,"6,000-8,000",Bachelor of Science in Secondary Education
+Pamantasan ng Lungsod ng Muntinlupa,NCR,Muntinlupa City,0 - 20000,"6,000-8,000",Bachelor of Science in Criminology
+Pamantasan ng Lungsod ng Muntinlupa,NCR,Muntinlupa City,0 - 20000,"6,000-8,000",Bachelor of Science in Accountancy
+Pamantasan ng Lungsod ng Muntinlupa,NCR,Muntinlupa City,0 - 20000,"6,000-8,000",Bachelor of Science in Psychology
+Southern Luzon State University - Alabat Campus,Quezon Province,"Alabat, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Leon Guinto Memorial College,Quezon Province,"Atimonan, Quezon",21000 - 40000,"24,000-26,000",Bachelor of Science in Elementary Education
+Leon Guinto Memorial College,Quezon Province,"Atimonan, Quezon",21000 - 40000,"24,000-26,000",Bachelor of Science in Secondary Education
+Leon Guinto Memorial College,Quezon Province,"Atimonan, Quezon",21000 - 40000,"24,000-26,000",Bachelor of Science in Accountancy
+Calauag Central Colleges,Quezon Province,"Calauag, Quezon",21000 - 40000,"26,000-28,000",Bachelor of Science in Elementary Education
+Calauag Central Colleges,Quezon Province,"Calauag, Quezon",21000 - 40000,"26,000-28,000",Bachelor of Science in Secondary Education
+Manuel S. Enverga University Foundation - Candelaria,Quezon Province,"Candelaria, Quezon",41000 - 60000,"40,000-44,000",Bachelor of Science in Elementary Education
+Manuel S. Enverga University Foundation - Candelaria,Quezon Province,"Candelaria, Quezon",41000 - 60000,"40,000-44,000",Bachelor of Science in Secondary Education
+Manuel S. Enverga University Foundation - Candelaria,Quezon Province,"Candelaria, Quezon",41000 - 60000,"40,000-44,000",Bachelor of Science in Criminology
+Manuel S. Enverga University Foundation - Candelaria,Quezon Province,"Candelaria, Quezon",41000 - 60000,"40,000-44,000",Bachelor of Science in Accountancy
+Manuel S. Enverga University Foundation - Candelaria,Quezon Province,"Candelaria, Quezon",41000 - 60000,"40,000-44,000",Bachelor of Science in Nursing
+Manuel S. Enverga University Foundation - Catanauan,Quezon Province,"Catanauan, Quezon",21000 - 40000,"28,000-31,000",Bachelor of Science in Elementary Education
+Manuel S. Enverga University Foundation - Catanauan,Quezon Province,"Catanauan, Quezon",21000 - 40000,"28,000-31,000",Bachelor of Science in Secondary Education
+Polytechnic University of the Philippines in General Luna,Quezon Province,"General Luna, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Holy Child Jesus College,Quezon Province,"Gumaca, Quezon",21000 - 40000,"20,000-22,000",Bachelor of Science in Elementary Education
+Holy Child Jesus College,Quezon Province,"Gumaca, Quezon",21000 - 40000,"20,000-22,000",Bachelor of Science in Secondary Education
+Southern Luzon State University - Gumaca Campus,Quezon Province,"Gumaca, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+"Northern Quezon College, Inc",Quezon Province,"Infanta, Quezon",0 - 20000,"14,000-18,000",Bachelor of Science in Elementary Education
+"Northern Quezon College, Inc",Quezon Province,"Infanta, Quezon",0 - 20000,"14,000-18,000",Bachelor of Science in Secondary Education
+Southern Luzon State University - Infanta Campus,Quezon Province,"Infanta, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Philippine Normal University in Lopez,Quezon Province,"Lopez, Quezon",0 - 20000,"3,000-4,000",Bachelor of Science in Elementary Education
+Polytechnic University of the Philippines - Lopez,Quezon Province,"Lopez, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Polytechnic University of the Philippines - Lopez,Quezon Province,"Lopez, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Polytechnic University of the Philippines - Lopez,Quezon Province,"Lopez, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Polytechnic University of the Philippines - Lopez,Quezon Province,"Lopez, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+Southern Luzon State University,Quezon Province,"Lucban, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Southern Luzon State University,Quezon Province,"Lucban, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Southern Luzon State University,Quezon Province,"Lucban, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Accountancy
+Southern Luzon State University,Quezon Province,"Lucban, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Southern Luzon State University,Quezon Province,"Lucban, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Nursing
+AMA Computer University - Lucena Campus,Quezon Province,"Lucena City, Quezon",21000 - 40000,"32,000-36,000",Bachelor of Science in Elementary Education
+AMA Computer University - Lucena Campus,Quezon Province,"Lucena City, Quezon",21000 - 40000,"32,000-36,000",Bachelor of Science in Secondary Education
+AMA Computer University - Lucena Campus,Quezon Province,"Lucena City, Quezon",21000 - 40000,"32,000-36,000",Bachelor of Science in Accountancy
+Manuel S. Enverga University Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"44,000-50,000",Bachelor of Science in Elementary Education
+Manuel S. Enverga University Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"44,000-50,000",Bachelor of Science in Secondary Education
+Manuel S. Enverga University Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"44,000-50,000",Bachelor of Science in Criminology
+Manuel S. Enverga University Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"44,000-50,000",Bachelor of Science in Accountancy
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Elementary Education
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Secondary Education
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Criminology
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Accountancy
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Nursing
+Calayan Educational Foundation,Quezon Province,"Lucena City, Quezon",41000 - 60000,"48,000-52,000",Bachelor of Science in Psychology
+Pambayang Kolehiyo ng Mauban,Quezon Province,"Mauban, Quezon",0 - 20000,"4,000-6,000",Bachelor of Science in Elementary Education
+Pambayang Kolehiyo ng Mauban,Quezon Province,"Mauban, Quezon",0 - 20000,"4,000-6,000",Bachelor of Science in Secondary Education
+Polytechnic University of the Philippines - Mulanay,Quezon Province,"Mulanay, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+CVE Colleges,Quezon Province,"Pagbilao, Quezon",21000 - 40000,"36,000-40,000",Bachelor of Science in Elementary Education
+CVE Colleges,Quezon Province,"Pagbilao, Quezon",21000 - 40000,"36,000-40,000",Bachelor of Science in Secondary Education
+Southern Luzon State University - Polilio Campus,Quezon Province,"Polillo, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Southern Luzon State University - Tagkawayan Campus,Quezon Province,"Tagkawayan, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+Polytechnic University of the Philippines - Unisan,Quezon Province,"Unisan, Quezon",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Our Lady of Fatima University in Antipolo City,Rizal,"Antipolo City, Rizal",41000 - 60000,"40,000-48,000",Bachelor of Science in Nursing
+Our Lady of Fatima University in Antipolo City,Rizal,"Antipolo City, Rizal",41000 - 60000,"40,000-48,000",Bachelor of Science in Psychology
+Our Lady of Fatima University in Antipolo City,Rizal,"Antipolo City, Rizal",41000 - 60000,"40,000-48,000",Bachelor of Science in Elementary Education
+Our Lady of Fatima University in Antipolo City,Rizal,"Antipolo City, Rizal",41000 - 60000,"40,000-48,000",Bachelor of Science in Accountacy
+ICCT Colleges Antipolo,Rizal,"Antipolo City, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges Antipolo,Rizal,"Antipolo City, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges Antipolo,Rizal,"Antipolo City, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges Antipolo,Rizal,"Antipolo City, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges Antipolo,Rizal,"Antipolo City, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+University of Rizal System - Antipolo Campus,Rizal,"Antipolo City, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Antipolo Campus,Rizal,"Antipolo City, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Antipolo Campus,Rizal,"Antipolo City, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+Siena College of Taytay,Rizal,"Taytay, Rizal",61000 - 80000,"60,000-66,000",Bachelor of Science in Elementary Education
+Siena College of Taytay,Rizal,"Taytay, Rizal",61000 - 80000,"60,000-66,000",Bachelor of Science in Secondary Education
+Siena College of Taytay,Rizal,"Taytay, Rizal",61000 - 80000,"60,000-66,000",Bachelor of Science in Accountacy
+Siena College of Taytay,Rizal,"Taytay, Rizal",61000 - 80000,"60,000-66,000",Bachelor of Science in Electronics Engineering
+Siena College of Taytay,Rizal,"Taytay, Rizal",61000 - 80000,"60,000-66,000",Bachelor of Science in Nursing
+ICCT Colleges Taytay,Rizal,"Taytay, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges Taytay,Rizal,"Taytay, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges Taytay,Rizal,"Taytay, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges Taytay,Rizal,"Taytay, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges Taytay,Rizal,"Taytay, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+University of Rizal System - Taytay Campus,Rizal,"Taytay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Taytay Campus,Rizal,"Taytay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Taytay Campus,Rizal,"Taytay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Nursing
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Elementary Education
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Secondary Education
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Accountacy
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Electronics Engineering
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Criminology
+ICCT Colleges Cainta,Rizal,"Cainta, Rizal",21000 - 40000,"15,000-35,000",Bachelor of Science in Psychology
+College of San Benildo-Rizal,Rizal,"Cainta, Rizal",41000 - 60000,"56,000-60,000",Bachelor of Science in Elementary Education
+College of San Benildo-Rizal,Rizal,"Cainta, Rizal",41000 - 60000,"56,000-60,000",Bachelor of Science in Secondary Education
+University of Rizal System - Cainta Campus,Rizal,"Cainta, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Cainta Campus,Rizal,"Cainta, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Civil Engineering
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Electrical Engineering
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Electronics Engineering
+University of Rizal System - Morong Campus,Rizal,"Morong, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+University of Rizal System - Tanay Campus,Rizal,"Tanay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Tanay Campus,Rizal,"Tanay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Tanay Campus,Rizal,"Tanay, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+San Ildefonso College,Rizal,"Tanay, Rizal",21000 - 40000,"24,000-26,000",Bachelor of Science in Elementary Education
+San Ildefonso College,Rizal,"Tanay, Rizal",21000 - 40000,"24,000-26,000",Bachelor of Science in Secondary Education
+ICCT Colleges Sumulong,Rizal,"Sumulong, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges Sumulong,Rizal,"Sumulong, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges Sumulong,Rizal,"Sumulong, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges Sumulong,Rizal,"Sumulong, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges Sumulong,Rizal,"Sumulong, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+University of Rizal System - Binangonan Campus,Rizal,"Binangonan, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Accountacy
+Binangonan Catholic College,Rizal,"Binangonan, Rizal",0 - 20000,"16,000-20,000",Bachelor of Science in Secondary Education
+Pamantasan ng Montalban,Rizal,"Rodriguez, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+Pamantasan ng Montalban,Rizal,"Rodriguez, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Rodriguez Campus,Rizal,"Rodriguez, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Rodriguez Campus,Rizal,"Rodriguez, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+ICCT Colleges San Mateo,Rizal,"San Mateo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges San Mateo,Rizal,"San Mateo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges San Mateo,Rizal,"San Mateo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges San Mateo,Rizal,"San Mateo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges San Mateo,Rizal,"San Mateo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+San Mateo Municipal College,Rizal,"San Mateo, Rizal",0 - 20000,"8,000-10,000",Bachelor of Science in Accountacy
+San Mateo Municipal College,Rizal,"San Mateo, Rizal",0 - 20000,"8,000-10,000",Bachelor of Science in Elementary Education
+San Mateo Municipal College,Rizal,"San Mateo, Rizal",0 - 20000,"8,000-10,000",Bachelor of Science in Secondary Education
+San Mateo Municipal College,Rizal,"San Mateo, Rizal",0 - 20000,"8,000-10,000",Bachelor of Science in Psychology
+St. Matthew College,Rizal,"San Mateo, Rizal",0 - 20000,"16,000-20,000",Bachelor of Science in Elementary Education
+St. Matthew College,Rizal,"San Mateo, Rizal",0 - 20000,"16,000-20,000",Bachelor of Science in Secondary Education
+University of Rizal System - Pililla Campus,Rizal,"Pililla, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Pililla Campus,Rizal,"Pililla, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education
+University of Rizal System - Pililla Campus,Rizal,"Pililla, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Psychology
+ICCT Colleges Cogeo,Rizal,"Cogeo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges Cogeo,Rizal,"Cogeo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges Cogeo,Rizal,"Cogeo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges Cogeo,Rizal,"Cogeo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges Cogeo,Rizal,"Cogeo, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+ICCT Colleges Angono,Rizal,"Angono, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Accountacy
+ICCT Colleges Angono,Rizal,"Angono, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Elementary Education
+ICCT Colleges Angono,Rizal,"Angono, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Secondary Education
+ICCT Colleges Angono,Rizal,"Angono, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Criminology
+ICCT Colleges Angono,Rizal,"Angono, Rizal",0 - 20000,"15,000-18,000",Bachelor of Science in Psychology
+University of Rizal System - Angono Campus,Rizal,"Angono, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Elementary Education
+University of Rizal System - Angono Campus,Rizal,"Angono, Rizal",Free Tuition,Free Tuition,Bachelor of Science in Secondary Education

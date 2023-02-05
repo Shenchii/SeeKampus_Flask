@@ -46,18 +46,6 @@ class AdminAccount(db.Model, UserMixin):
         return '<User %r>' % self.id
 
 
-class DTSchool(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    Course = db.Column(db.String(255))
-    Tuition_Fee = db.Column(db.String(255))
-    Location = db.Column(db.String(255))
-    City = db.Column(db.String(255))
-    School = db.Column(db.String(255))
-
-    def __repr__(self):
-        return '<DTSchool %r>' % self.id
-
-
 class ScProfiles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     School = db.Column(db.String(255))
@@ -65,6 +53,7 @@ class ScProfiles(db.Model):
     Location = db.Column(db.String(255))
     City = db.Column(db.String(255))
     Course = db.Column(db.String(255))
+    T_Range = db.Column(db.String(255))
 
     def __repr__(self):
         return '<ScProfiles %r>' % self.id
@@ -110,20 +99,20 @@ def register():
     location = request.form['location']
     be_course = {
         'Bachelor of Science in Accountancy': 'hd-accountancy.csv',
-        'Bachelor of Elementary Education': 'hd-EED.csv',
-        'Bachelor of Science in Architecture': 'hd-Archi.csv',
-        'Bachelor of Science in Civil Engineering': 'hd-Civil.csv',
-        'Bachelor of Science in Criminology': 'hd-Crim.csv',
-        'Bachelor of Science in Electrical Engineering': 'hd-Electrical.csv',
-        'Bachelor of Science in Electronics Engineering': 'hd-Electronics.csv',
-        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical.csv',
-        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
-        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
-        'Bachelor of Secondary Education': 'hd-SED.csv',
-        'Bachelor of Secondary Education Major in English': 'hd-SED.csv',
-        'Bachelor of Secondary Education Major in Filipino': 'hd-SED.csv',
-        'Bachelor of Secondary Education Major in Mathematics': 'hd-SED.csv',
-        'Bachelor of Secondary Education Major in Social Studies': 'hd-SED.csv'
+        'Bachelor of Elementary Education': 'hd-elementary-education.csv',
+        'Bachelor of Science in Architecture': 'hd-architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-civil.csv',
+        'Bachelor of Science in Criminology': 'hd-criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-electrical.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-electronics.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-mechanical.csv',
+        'Bachelor of Science in Nursing': 'hd-nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-psychology.csv',
+        'Bachelor of Secondary Education': 'hd-secondary-education.csv',
+        'Bachelor of Secondary Education Major in English': 'hd-secondary-education.csv',
+        'Bachelor of Secondary Education Major in Filipino': 'hd-secondary-education.csv',
+        'Bachelor of Secondary Education Major in Mathematics': 'hd-secondary-education.csv',
+        'Bachelor of Secondary Education Major in Social Studies': 'hd-secondary-education.csv'
     }
 
     # Create a mapping dictionary that maps each possible course value to its corresponding index
@@ -149,20 +138,22 @@ def register():
         '0 - 20000': 0,
         '21000 - 40000': 1,
         '41000 - 60000': 2,
-        'Free Tuition': 3,
+        '61000 - 80000': 3,
+        '81000 - 100000': 4,
+        '101000 - 120000': 5,
+        '150000 above': 6,
+        'Free Tuition': 7,
         # Add other possible location values and their indices here
     }
 
     # Create a mapping dictionary that maps each possible location value to its corresponding index
     location_mapping = {
         'Laguna': 0,
-        'Brgy. Bucal': 0,
-        'Brgy. Halang': 1,
-        'Brgy. III': 2,
-        'Brgy. Makiling': 3,
-        'Brgy. Paciano Rizal': 4,
-        'Brgy. Parian': 5,
-        'Brgy. VII': 6,
+        'Cavite': 1,
+        'Batangas': 2,
+        'Rizal': 3,
+        'Quezon Province': 4,
+        'NCR': 5,
         # Add other possible location values and their indices here
     }
     encoded_input_values = [
@@ -171,7 +162,7 @@ def register():
         location_mapping[location]
     ]
     # Execute a query and store the results in a DataFrame
-    school_data = pd.read_sql_query(db.session.query(DTSchool).filter_by(Course=course).statement, db.session.bind)
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter_by(Course=course).statement, db.session.bind)
 
     for column_name in school_data.columns:
         if school_data[column_name].dtype == object:
@@ -179,7 +170,7 @@ def register():
         else:
             pass
 
-    X = school_data.drop(columns=['School', 'id', 'City'])
+    X = school_data.drop(columns=['School', 'id', 'City', 'Tuition_Fee'])
     y = school_data['School']
 
     dt_model = DecisionTreeClassifier()
@@ -194,8 +185,8 @@ def register():
     # Flatten the array
     schools_flat = schools.flatten()
 
-    school_data = pd.read_sql_query(db.session.query(DTSchool).filter(
-        (DTSchool.Course == course) & (DTSchool.Tuition_Fee == tuition_fee) & (DTSchool.Location == location)
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Course == course) & (ScProfiles.T_Range == tuition_fee) & (ScProfiles.Location == location)
     ).statement, db.session.bind)
 
     # Convert the integer labels back into the original string labels
@@ -212,27 +203,32 @@ def register():
         df_school.drop(['Time Date', 'School', 'Course', 'Year', 'Month', 'Day'], axis=1, inplace=True)
         df_school.columns = ['y', 'ds']
 
-        m = Prophet.Prophet(interval_width=0.95)
-        m.add_seasonality(name='yearly', period=365.25, fourier_order=10)
-        m.add_seasonality(name='semi-annual', period=365.25 / 2, fourier_order=10)
-        _model = m.fit(df_school)
+        # Check if there are at least two non-NaN rows
+        if df_school.dropna().shape[0] >= 2:
+            # Create a Prophet model
+            m = Prophet.Prophet(interval_width=0.95)
+            m.add_seasonality(name='yearly', period=365.25, fourier_order=10)
+            m.add_seasonality(name='semi-annual', period=365.25 / 2, fourier_order=10)
+            _model = m.fit(df_school)
 
-        # Get the latest date in the original data frame
-        latest_date = df_school['ds'].max()
+            # Get the latest date in the original data frame
+            latest_date = df_school['ds'].max()
 
-        # Get the range of dates for the future data frame
-        start_date = latest_date - pd.DateOffset(years=5)
-        end_date = latest_date + pd.DateOffset(years=1)
-        future_dates = pd.date_range(start_date, end_date, freq='Y')
+            # Get the range of dates for the future data frame
+            start_date = latest_date - pd.DateOffset(years=5)
+            end_date = latest_date + pd.DateOffset(years=1)
+            future_dates = pd.date_range(start_date, end_date, freq='Y')
 
-        # Create the future data frame
-        _future = pd.DataFrame({'ds': future_dates})
+            # Create the future data frame
+            _future = pd.DataFrame({'ds': future_dates})
 
-        # Get predictions for those specific dates
-        _forecast = m.predict(_future)
-        _forecast['yhat'] = _forecast['yhat'].clip(lower=0, upper=100).round()
-        yhat_values = _forecast['yhat'].tolist()
-        all_yhat_values.append(yhat_values)
+            # Get predictions for those specific dates
+            _forecast = m.predict(_future)
+            _forecast['yhat'] = _forecast['yhat'].clip(lower=0, upper=100).round()
+            yhat_values = _forecast['yhat'].tolist()
+            all_yhat_values.append(yhat_values)
+        else:
+            all_yhat_values.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     recommended_schools = get_school_profiles(schools, all_yhat_values)
     if not recommended_schools:
@@ -246,7 +242,7 @@ def register():
 def get_school_profiles(schools, all_yhat_values):
     school_profiles = []
     for i, school in enumerate(schools):
-        school_profile = DTSchool.query.filter_by(School=school).first()
+        school_profile = ScProfiles.query.filter_by(School=school).first()
         if school_profile:
             school_profiles.append({
                 'School': school_profile.School,
