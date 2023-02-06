@@ -1,4 +1,5 @@
 import joblib
+import os
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -98,26 +99,26 @@ def register():
     tuition_fee = request.form['tuition_fee']
     location = request.form['location']
     be_course = {
-        'Bachelor of Science in Accountancy': 'hd-accountancy.csv',
-        'Bachelor of Elementary Education': 'hd-elementary-education.csv',
-        'Bachelor of Science in Architecture': 'hd-architecture.csv',
-        'Bachelor of Science in Civil Engineering': 'hd-civil.csv',
-        'Bachelor of Science in Criminology': 'hd-criminology.csv',
-        'Bachelor of Science in Electrical Engineering': 'hd-electrical.csv',
-        'Bachelor of Science in Electronics Engineering': 'hd-electronics.csv',
-        'Bachelor of Science in Mechanical Engineering': 'hd-mechanical.csv',
-        'Bachelor of Science in Nursing': 'hd-nursing.csv',
-        'Bachelor of Science in Psychology': 'hd-psychology.csv',
-        'Bachelor of Secondary Education': 'hd-secondary-education.csv',
-        'Bachelor of Secondary Education Major in English': 'hd-secondary-education.csv',
-        'Bachelor of Secondary Education Major in Filipino': 'hd-secondary-education.csv',
-        'Bachelor of Secondary Education Major in Mathematics': 'hd-secondary-education.csv',
-        'Bachelor of Secondary Education Major in Social Studies': 'hd-secondary-education.csv'
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv',
+        'Bachelor of Science in Secondary Education Major in English': 'hd-Secondary Education.csv',
+        'Bachelor of Science in Secondary Education Major in Filipino': 'hd-Secondary Education.csv',
+        'Bachelor of Science in Secondary Education Major in Mathematics': 'hd-Secondary Education.csv',
+        'Bachelor of Science in Secondary Education Major in Social Studies': 'hd-Secondary Education.csv'
     }
 
     # Create a mapping dictionary that maps each possible course value to its corresponding index
     course_mapping = {
-        'Bachelor of Elementary Education': 0,
+        'Bachelor of Science in Elementary Education': 0,
         'Bachelor of Science in Accountancy': 0,
         'Bachelor of Science in Architecture': 0,
         'Bachelor of Science in Civil Engineering': 0,
@@ -127,11 +128,11 @@ def register():
         'Bachelor of Science in Mechanical Engineering': 0,
         'Bachelor of Science in Nursing': 0,
         'Bachelor of Science in Psychology': 0,
-        'Bachelor of Secondary Education': 0,
-        'Bachelor of Secondary Education Major in English': 0,
-        'Bachelor of Secondary Education Major in Filipino': 0,
-        'Bachelor of Secondary Education Major in Mathematics': 0,
-        'Bachelor of Secondary Education Major in Social Studies': 0
+        'Bachelor of Science in Secondary Education': 0,
+        'Bachelor of Science in Secondary Education Major in English': 0,
+        'Bachelor of Science in Secondary Education Major in Filipino': 0,
+        'Bachelor of Science in Secondary Education Major in Mathematics': 0,
+        'Bachelor of Science in Secondary Education Major in Social Studies': 0
         # Add other possible course values and their indices here
     }
     tuition_mapping = {
@@ -191,7 +192,7 @@ def register():
 
     # Convert the integer labels back into the original string labels
     schools = school_data['School'].tolist()
-    df = pd.read_csv(be_course[course])
+    df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
 
     df['Year'] = df['Time Date'].apply(lambda x: str(x)[-4:])
     df['Month'] = df['Time Date'].apply(lambda x: str(x)[-6:-4])
@@ -280,7 +281,7 @@ def login():
         login_user(user, remember=remember)
 
         if current_user.role == 'admin':
-            return redirect(url_for('admin.index'))
+            return redirect(url_for('upload'))
         else:
             flash('You are not an admin')
             return redirect(url_for('login'))
@@ -288,9 +289,74 @@ def login():
 
 
 @app.route('/logout')
+@login_required
 def logout():
-    session.clear()
-    return redirect(url_for('login'))
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@app.route('/upload')
+@login_required
+def upload():
+    return render_template('upload.html')
+
+
+@app.route('/upload', methods=['POST'])
+@login_required
+def upload_post():
+    course = request.form['course']
+    year = request.form['year']
+    batch = request.form['batch']
+    file = request.files['file']
+    batch_dates = {
+        'a': f'3012{year}',
+        'b': f'3112{year}',
+    }
+    if not file:
+        return "No file"
+
+    if not file.filename.endswith('.csv'):
+
+        return redirect(url_for('upload'))
+
+    filename = f"{course}-{year}{batch}.csv"
+    file_path = os.path.join(f'Historical Data/Yearly/{course}/{course}-{year}{batch}.csv')
+    file.save(file_path)
+    # read test.csv into a pandas dataframe
+    test = pd.read_csv(f'Historical Data/Yearly/{course}/{course}-{year}{batch}.csv', header=0, encoding='windows-1252')
+
+    # rename the columns in test dataframe
+    test.columns = ['School', 'Passing Rate']
+    test['School'] = test['School'].str.replace('\n', ' ').str.replace('-', '')
+    test['Passing Rate'] = test['Passing Rate'].str.replace('%', '')
+    test.dropna(inplace=True)
+    # add a new column 'Course' to test dataframe and fill with 'Bachelor of Science in Accountancy'
+    test['Course'] = f'Bachelor of Science in {course}'
+
+    # add a new column 'Time Date' to test dataframe and fill with '30122010'
+    test['Time Date'] = batch_dates[batch]
+
+    # read hd_course csv into a pandas dataframe
+    hd_course = pd.read_csv(f'Historical Data/hd-{course}.csv', header=0, encoding='windows-1252')
+
+    # concatenate the two dataframes along axis 0 (row-wise)
+    result = pd.concat([hd_course, test], axis=0)
+
+    result.drop_duplicates(inplace=True)  # removes duplicate rows
+    # result.dropna(inplace=True)  # removes rows with missing values
+
+    result = result.sort_values(by='School', ascending=True)
+
+    # write the result dataframe to a new csv file
+    result.to_csv(f'Historical Data/hd-{course}.csv', index=False, encoding='windows-1252')
+
+    return redirect(url_for('uploaded'))
+
+
+@app.route('/uploaded')
+@login_required
+def uploaded():
+    return render_template('uploaded.html')
 
 
 def create_admin():

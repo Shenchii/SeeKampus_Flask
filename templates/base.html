@@ -51,8 +51,13 @@
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-primary" role="button"
+               style="position: absolute; right: 0;">Logout</a>
+        {% endif %}
         <a href="{{ url_for('login') }}" class="btn btn-outline-primary" role="button"
-           style="position: absolute; right: 0;">Admin</a>
+           style="position: absolute; right: 90px;">Admin</a>
+
 
 
         {#        <li class="nav-item dropdown">#}
@@ -284,7 +289,13 @@
                     <span>Recommend by Course</span>
                 </a>
             </li><!-- End Recommend by Course Nav -->
-
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link " href="/upload">
+                    <i class="bi bi-journal-text"></i>
+                    <span>Upload Board Exams</span>
+                </a>
+            </li><!-- End Upload Board Exams Nav --> {% endif %}
 
             {#      <li class="nav-item">#}
             {#        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">#}

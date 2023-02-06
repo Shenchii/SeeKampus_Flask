@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {{ super() }}
+{% block title %}
+    <title>Uploaded Successfully</title>
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+    <main>
+    <div class="container">
+
+      <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+        <h1 class="display-1">UPLOADED SUCCESSFULLY</h1>
+        <h2>The file has been uploaded and added to the database.</h2>
+        <a class="btn" href="/upload">Upload another</a>
+        <img src="{{ url_for('static', filename="assets/img/not-found.svg") }}" class="img-fluid py-5" alt="Page Not Found">
+{#        <div class="copyright">#}
+{#        &copy; Copyright <strong><span>SeeKampus</span></strong>. All Rights Reserved#}
+{#    </div>#}
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+{% endblock %}
