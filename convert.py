@@ -3,7 +3,7 @@ import pandas as pd
 from app import db, ScProfiles
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv('scprofile.csv', encoding='ISO-8859-1')
+df = pd.read_csv('new-profile.csv', encoding='ISO-8859-1')
 
 for _, row in df.iterrows():
     # Check if the record already exists in the database

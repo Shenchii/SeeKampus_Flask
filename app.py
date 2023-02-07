@@ -1,3 +1,4 @@
+import math
 import joblib
 import os
 import numpy as np
@@ -86,6 +87,308 @@ def index():  # put application's code here
 @app.route('/recommend-by-school')
 def recommend_by_school():
     return render_template('recommend-by-school.html')
+
+
+@app.route('/top-courses-batangas')
+def top_courses_batangas():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'Batangas'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+
+    return render_template('top-courses-batangas.html', results=sorted_list)
+
+
+@app.route('/top-courses-cavite')
+def top_courses_cavite():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'Cavite'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+    return render_template('top-courses-cavite.html', results=sorted_list)
+
+
+@app.route('/top-courses-laguna')
+def top_courses_laguna():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'Laguna'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+    return render_template('top-courses-laguna.html', results=sorted_list)
+
+
+@app.route('/top-courses-ncr')
+def top_courses_ncr():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'NCR'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+    return render_template('top-courses-ncr.html', results=sorted_list)
+
+
+@app.route('/top-courses-quezon')
+def top_courses_quezon():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'Quezon Province'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+    return render_template('top-courses-quezon.html', results=sorted_list)
+
+
+@app.route('/top-courses-rizal')
+def top_courses_rizal():
+    courses = ['Bachelor of Science in Elementary Education',
+               'Bachelor of Science in Accountancy',
+               'Bachelor of Science in Architecture',
+               'Bachelor of Science in Civil Engineering',
+               'Bachelor of Science in Criminology',
+               'Bachelor of Science in Electrical Engineering',
+               'Bachelor of Science in Electronics Engineering',
+               'Bachelor of Science in Mechanical Engineering',
+               'Bachelor of Science in Nursing',
+               'Bachelor of Science in Psychology',
+               'Bachelor of Science in Secondary Education']
+
+    be_course = {
+        'Bachelor of Science in Accountancy': 'hd-Accountancy.csv',
+        'Bachelor of Science in Elementary Education': 'hd-Elementary Education.csv',
+        'Bachelor of Science in Architecture': 'hd-Architecture.csv',
+        'Bachelor of Science in Civil Engineering': 'hd-Civil Engineering.csv',
+        'Bachelor of Science in Criminology': 'hd-Criminology.csv',
+        'Bachelor of Science in Electrical Engineering': 'hd-Electrical Engineering.csv',
+        'Bachelor of Science in Electronics Engineering': 'hd-Electronics Engineering.csv',
+        'Bachelor of Science in Mechanical Engineering': 'hd-Mechanical Engineering.csv',
+        'Bachelor of Science in Nursing': 'hd-Nursing.csv',
+        'Bachelor of Science in Psychology': 'hd-Psychology.csv',
+        'Bachelor of Science in Secondary Education': 'hd-Secondary Education.csv'
+    }
+
+    location = 'Rizal'
+    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+        (ScProfiles.Location == location)
+    ).statement, db.session.bind)
+
+    schools = school_data['School']
+
+    results = {}
+    for course in courses:
+        df = pd.read_csv(f'Historical Data/{be_course[course]}', encoding='windows-1252')
+        df_school = df[df['School'].astype(str).isin(schools)]
+        df_school['Passing Rate'] = pd.to_numeric(df_school['Passing Rate'], errors='coerce')
+        avg_passing_rate = round(df_school['Passing Rate'].mean(), 2)
+        if not np.isnan(avg_passing_rate):
+            results[course] = avg_passing_rate
+
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+    sorted_list = []
+    for i, (course, passing_rate) in enumerate(sorted_results, start=1):
+        sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
+    return render_template('top-courses-quezon.html', results=sorted_list)
 
 
 @app.route('/recommended-schools')

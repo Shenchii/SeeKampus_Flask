@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {{ super() }}
+{% block title %}
+    <title>Results</title>
+{% endblock %}
+{% block sidebar %}
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/home">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li><!-- End Home Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link " href="/recommend-by-school">
+                    <i class="bi bi-menu-button-wide"></i>
+                    <span>Recommend by School</span>
+                </a>
+            </li><!-- End Recommend by School Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Top Courses</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="charts-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="/top-courses-batangas" class="active">
+                            <i class="bi bi-circle"></i><span>Batangas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/top-courses-cavite">
+                            <i class="bi bi-circle"></i><span>Cavite</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/top-courses-laguna">
+                            <i class="bi bi-circle"></i><span>Laguna</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/top-courses-ncr">
+                            <i class="bi bi-circle"></i><span>NCR</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/top-courses-quezon">
+                            <i class="bi bi-circle"></i><span>Quezon Province</span>
+                        </a>
+                    <li>
+                        <a href="/top-courses-rizal">
+                            <i class="bi bi-circle"></i><span>Rizal</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Top Courses Nav -->
+        </ul>
+
+    </aside><!-- End Sidebar-->
+{% endblock %}
+{% block content %}
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Top Courses based on Board Exam Results</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Batangas</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Course</th>
+                <th scope="col">Passing Rates</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.rank }}</td>
+                    <td>{{ result.course }}</td>
+                    <td>{{ result.passing_rate }}%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+    </main>
+{% endblock %}
