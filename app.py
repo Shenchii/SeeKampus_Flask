@@ -388,7 +388,7 @@ def top_courses_rizal():
     sorted_list = []
     for i, (course, passing_rate) in enumerate(sorted_results, start=1):
         sorted_list.append({'rank': i, 'course': course, 'passing_rate': passing_rate})
-    return render_template('top-courses-quezon.html', results=sorted_list)
+    return render_template('top-courses-rizal.html', results=sorted_list)
 
 
 @app.route('/recommended-schools')

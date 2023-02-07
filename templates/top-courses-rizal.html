@@ -17,9 +17,9 @@
             <li class="nav-item">
                 <a class="nav-link " href="/recommend-by-school">
                     <i class="bi bi-menu-button-wide"></i>
-                    <span>Recommend by School</span>
+                    <span>School Finder</span>
                 </a>
-            </li><!-- End Recommend by School Nav -->
+            </li><!-- End School Finder Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -27,7 +27,7 @@
                 </a>
                 <ul id="charts-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/top-courses-batangas" >
+                        <a href="/top-courses-batangas">
                             <i class="bi bi-circle"></i><span>Batangas</span>
                         </a>
                     </li>
@@ -62,7 +62,7 @@
     </aside><!-- End Sidebar-->
 {% endblock %}
 {% block content %}
-<main id="main" class="main">
+    <main id="main" class="main">
         <div class="pagetitle">
             <h1>Top Courses based on Board Exam Results</h1>
             <nav>
@@ -77,7 +77,7 @@
             <tr>
                 <th scope="col">Rank</th>
                 <th scope="col">Course</th>
-                <th scope="col">Passing Rates</th>
+                <th scope="col">Average Passing Rates</th>
             </tr>
             </thead>
             <tbody>
@@ -86,9 +86,9 @@
                     <td>{{ result.rank }}</td>
                     <td>{{ result.course }}</td>
                     {% if result.passing_rate == 'No available data' %}
-                    <td>{{ result.passing_rate }}</td>
+                        <td>{{ result.passing_rate }}</td>
                     {% else %}
-                    <td>{{ result.passing_rate }}%</td>
+                        <td>{{ result.passing_rate }}%</td>
                     {% endif %}
                 </tr>
             {% endfor %}
