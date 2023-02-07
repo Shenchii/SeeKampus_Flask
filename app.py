@@ -458,6 +458,7 @@ def register():
         'Rizal': 3,
         'Quezon Province': 4,
         'NCR': 5,
+        'Any': 6,
         # Add other possible location values and their indices here
     }
     encoded_input_values = [
@@ -488,10 +489,14 @@ def register():
 
     # Flatten the array
     schools_flat = schools.flatten()
-
-    school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
-        (ScProfiles.Course == course) & (ScProfiles.T_Range == tuition_fee) & (ScProfiles.Location == location)
-    ).statement, db.session.bind)
+    if location == 'Any':
+        school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+            (ScProfiles.Course == course) & (ScProfiles.T_Range == tuition_fee)
+        ).statement, db.session.bind)
+    else:
+        school_data = pd.read_sql_query(db.session.query(ScProfiles).filter(
+            (ScProfiles.Course == course) & (ScProfiles.T_Range == tuition_fee) & (ScProfiles.Location == location)
+        ).statement, db.session.bind)
 
     # Convert the integer labels back into the original string labels
     schools = school_data['School'].tolist()
